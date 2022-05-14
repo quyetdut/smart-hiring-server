@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/document")
+@RequestMapping("/project/document")
 @RequiredArgsConstructor
 @Slf4j
 public class DocumentController {

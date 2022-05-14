@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/project-members")
+@RequestMapping("/project/project-members")
 @AllArgsConstructor
 @Slf4j
 public class ProjectMemberController {

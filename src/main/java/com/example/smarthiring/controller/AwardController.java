@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/award")
+@RequestMapping("persona/award")
 /*@CrossOrigin(origins ="*", maxAge = 3600)*/
 @RequiredArgsConstructor
 public class AwardController {

@@ -1,0 +1,378 @@
+CREATE TABLE hibernate_sequence(next_val bigint(20) DEFAULT NULL);
+INSERT INTO hibernate_sequence(next_val) values(1);
+
+CREATE TABLE `users` (
+`id` int NOT NULL,
+`create_at` datetime DEFAULT NULL,
+`email` varchar(50) DEFAULT NULL,
+`is_enabled` bit(1) DEFAULT NULL,
+`is_looked` bit(1) DEFAULT NULL,
+`password` varchar(120) DEFAULT NULL,
+`update_at` datetime DEFAULT NULL,
+`uid` varchar(255) DEFAULT NULL,
+PRIMARY KEY (`id`),
+UNIQUE KEY `UK_users_email` (`email`)
+);
+
+CREATE TABLE `roles` (
+`id` int NOT NULL AUTO_INCREMENT,
+`name` varchar(255) DEFAULT NULL,
+PRIMARY KEY (`id`),
+UNIQUE KEY `UK_roles_name` (`name`)
+);
+
+CREATE TABLE `user_roles` (
+`user_id` int NOT NULL,
+`role_id` int NOT NULL,
+PRIMARY KEY (`user_id`,`role_id`),
+KEY `FK_roles_role_id` (`role_id`),
+CONSTRAINT `FK_user_roles_role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
+CONSTRAINT `FK_user_roles_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+);
+
+CREATE TABLE `confirmation_tokens` (
+`id` bigint NOT NULL AUTO_INCREMENT,
+`confirmed_at` datetime DEFAULT NULL,
+`confirmation_type` varchar(255) DEFAULT NULL,
+`created_at` datetime NOT NULL,
+`expire_at` datetime NOT NULL,
+`token` varchar(255) NOT NULL,
+`user_id` int NOT NULL,
+PRIMARY KEY (`id`),
+UNIQUE KEY `UK_confirmation_tokens_token` (`token`),
+KEY `FK_confirmation_tokens_user_id` (`user_id`),
+CONSTRAINT `FK_confirmation_tokens_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+);
+CREATE TABLE `awards` (
+`id` int NOT NULL AUTO_INCREMENT,
+`img` varchar(255) DEFAULT NULL,
+`name` varchar(255) DEFAULT NULL,
+PRIMARY KEY (`id`),
+UNIQUE KEY `UK_awards_name` (`name`)
+);
+
+CREATE TABLE `capabilities` (
+`id` int NOT NULL AUTO_INCREMENT,
+`name` varchar(255) NOT NULL,
+PRIMARY KEY (`id`),
+UNIQUE KEY `UK_capabilities_name` (`name`)
+);
+
+CREATE TABLE `certification` (
+`id` int NOT NULL AUTO_INCREMENT,
+`name` varchar(255) NOT NULL,
+`profile_id` int NOT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `division` (
+`id` int NOT NULL AUTO_INCREMENT,
+`name` varchar(255) NOT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `locations` (
+`id` int NOT NULL AUTO_INCREMENT,
+`city` varchar(255) NOT NULL,
+`time_zone` varchar(255) NOT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `position` (
+`id` int NOT NULL AUTO_INCREMENT,
+`icon` varchar(255) NOT NULL,
+`name` varchar(255) NOT NULL,
+`role_name` varchar(255) NOT NULL,
+PRIMARY KEY (`id`),
+UNIQUE KEY `UK_position_name` (`name`)
+);
+
+CREATE TABLE `english` (
+`id` int NOT NULL AUTO_INCREMENT,
+`profile_id` int NOT NULL,
+`level` int NOT NULL,
+PRIMARY KEY (`id`),
+UNIQUE KEY `UK_english_profile_id` (`profile_id`)
+);
+
+CREATE TABLE `position_capabilities` (
+`id` int NOT NULL AUTO_INCREMENT,
+`capabilities_id` int NOT NULL,
+`position_id` int NOT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `profile_awards` (
+`id` int NOT NULL AUTO_INCREMENT,
+`amount` int DEFAULT '0',
+`award_id` int NOT NULL,
+`profile_id` int NOT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `profile_capabilities` (
+`id` int NOT NULL AUTO_INCREMENT,
+`capabilities_id` int NOT NULL,
+`level` int NOT NULL,
+`profile_id` int NOT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `profile_position` (
+`id` int NOT NULL AUTO_INCREMENT,
+`position_id` int NOT NULL,
+`profile_id` int NOT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `profiles` (
+`id` int NOT NULL AUTO_INCREMENT,
+`contractual_term` varchar(255) NOT NULL,
+`division_id` int NOT NULL,
+`first_name` varchar(255) NOT NULL,
+`last_name` varchar(255) NOT NULL,
+`position` varchar(255) NOT NULL,
+`location_id` int DEFAULT NULL,
+`user_id` int NOT NULL,
+`created_at` datetime DEFAULT NULL,
+`updated_at` datetime DEFAULT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `project_matching` (
+`id` int NOT NULL AUTO_INCREMENT,
+`matching_score` int NOT NULL,
+`profile_id` int NOT NULL,
+`project_id` int NOT NULL,
+`position_id` int NOT NULL,
+`project_name` varchar(255) NOT NULL,
+`skills` varchar(255) DEFAULT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `work_experiences` (
+`id` int NOT NULL AUTO_INCREMENT,
+`business_type` varchar(255) NOT NULL,
+`description` longtext NOT NULL,
+`employer` varchar(255) NOT NULL,
+`end_at` date NOT NULL,
+`position` varchar(255) NOT NULL,
+`profile_id` int NOT NULL,
+`start_at` date NOT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `document` (
+`id` bigint NOT NULL AUTO_INCREMENT,
+`name` varchar(255) NOT NULL,
+`file_path` varchar(255) DEFAULT NULL,
+`project_id` int DEFAULT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `personas_technical` (
+`id` int NOT NULL AUTO_INCREMENT,
+`capabilities_id` int DEFAULT NULL,
+`level` int DEFAULT NULL,
+`importance` int DEFAULT NULL,
+`project_personas_id` int DEFAULT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `process` (
+`id` int NOT NULL AUTO_INCREMENT,
+`process_name` varchar(255) DEFAULT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `project` (
+`id` int NOT NULL AUTO_INCREMENT,
+`big_vision` varchar(255) DEFAULT NULL,
+`created_at` datetime DEFAULT NULL,
+`customer` varchar(255) DEFAULT NULL,
+`end_at` datetime NOT NULL,
+`img_path` varchar(255) DEFAULT NULL,
+`po_id` int DEFAULT NULL,
+`problem_statement` varchar(255) DEFAULT NULL,
+`project_completion` double NOT NULL,
+`project_name` varchar(255) DEFAULT NULL,
+`project_status` varchar(255) DEFAULT NULL,
+`revenue_streams` varchar(255) DEFAULT NULL,
+`start_at` datetime NOT NULL,
+`updated_at` datetime DEFAULT NULL,
+`value_proposition` varchar(255) DEFAULT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `project_member` (
+`id` int NOT NULL AUTO_INCREMENT,
+`created_at` datetime DEFAULT NULL,
+`updated_at` datetime DEFAULT NULL,
+`position_id` int DEFAULT NULL,
+`project_id` int DEFAULT NULL,
+`user_id` int DEFAULT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `project_personas` (
+`id` int NOT NULL AUTO_INCREMENT,
+`created_at` datetime DEFAULT NULL,
+`month_needed` int DEFAULT NULL,
+`number_current` int DEFAULT NULL,
+`number_needed` int DEFAULT NULL,
+`position_id` int DEFAULT NULL,
+`project_id` int DEFAULT NULL,
+`updated_at` datetime DEFAULT NULL,
+`utilization` double DEFAULT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `project_process` (
+`id` int NOT NULL AUTO_INCREMENT,
+`process_id` int DEFAULT NULL,
+`project_id` int DEFAULT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `project_tool` (
+`id` int NOT NULL AUTO_INCREMENT,
+`project_id` int DEFAULT NULL,
+`tool_id` int DEFAULT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `project_user_status` (
+`id` int NOT NULL AUTO_INCREMENT,
+`created_at` datetime DEFAULT NULL,
+`updated_at` datetime DEFAULT NULL,
+`collaborate_status` varchar(255) DEFAULT NULL,
+`interesting_status` varchar(255) DEFAULT NULL,
+`project_id` int DEFAULT NULL,
+`user_id` int DEFAULT NULL,
+`position_id` int NOT NULL,
+PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `tool` (
+`id` int NOT NULL AUTO_INCREMENT,
+`tool_name` varchar(255) DEFAULT NULL,
+PRIMARY KEY (`id`)
+);
+
+
+INSERT INTO roles(name) VALUES('ROLE_DEV');
+INSERT INTO roles(name) VALUES('ROLE_PO');
+INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+
+INSERT INTO `position` VALUES
+(1,'https://everlifeai.github.io/docs/images/developer.png','Web Developer','DEV'),
+(2,'https://cdn.dribbble.com/users/1428228/screenshots/3454859/designer.png','Back-End Developer','DEV'),
+(3,'https://cdn.computercareers.org/wp-content/uploads/Solution-Architect.png','Full-stack Developer','DEV'),
+(4,'https://cdn.computercareers.org/wp-content/uploads/Solution-Architect.png','Quality Assurance','DEV'),
+(5,'https://cdn.computercareers.org/wp-content/uploads/Solution-Architect.png','Solution Architect','DEV'),
+(6,'https://cdn.computercareers.org/wp-content/uploads/Solution-Architect.png','Designer','DEV'),
+(7,'https://cdn.computercareers.org/wp-content/uploads/Solution-Architect.png','Product Owner','PO'),
+(8,'https://cdn.computercareers.org/wp-content/uploads/Solution-Architect.png','Scrum Master','PO'),
+(9,'https://cdn.computercareers.org/wp-content/uploads/Solution-Architect.png','Project Management','PO');
+
+
+INSERT INTO `capabilities` VALUES
+(1,'IOS'),
+(2,'Java'),
+(3,'NodeJs'),
+(4,'PHP'),
+(5, 'Python'),
+(6, 'ReactJs'),
+(7, 'React Native'),
+(8, 'VueJs'),
+(9, 'Unity'),
+(10, 'Dot Net'),
+(11, 'Game Artist'),
+(12, 'Visual Design'),
+(13, 'Manual Tester'),
+(14, 'Automation Tester');
+
+INSERT INTO  `position_capabilities` VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 4, 1),
+(5, 5, 1),
+(6, 6, 1),
+(7, 7, 1),
+(8, 8, 1),
+(9, 9, 1),
+(10, 10, 1),
+(11, 11, 1),
+(12, 12, 1),
+(13, 13, 1),
+(14, 14, 1),
+(15, 1, 2),
+(16, 2, 2),
+(17, 3, 2),
+(18, 4, 2),
+(19, 5, 2),
+(20, 6, 2),
+(21, 7, 2),
+(22, 8, 2),
+(23, 9, 2),
+(24, 10, 2),
+(25, 11, 2),
+(26, 12, 2),
+(27, 13, 2),
+(28, 14, 2),
+(29, 1, 3),
+(30, 2, 3),
+(31, 3, 3),
+(32, 4, 3),
+(33, 5, 3),
+(34, 6, 3),
+(35, 7, 3),
+(36, 8, 3),
+(37, 9, 3),
+(38, 10, 3),
+(39, 11, 3),
+(40, 12, 3),
+(41, 13, 3),
+(42, 14, 3),
+(43, 13, 4),
+(44, 14, 4),
+(45, 1, 5),
+(46, 2, 5),
+(47, 3, 5),
+(48, 4, 5),
+(49, 5, 5),
+(50, 6, 5),
+(51, 7, 5),
+(52, 8, 5),
+(53, 9, 5),
+(54, 10, 5),
+(55, 11, 5),
+(56, 12, 5),
+(57, 13, 5),
+(58, 14, 5),
+(59, 11, 6),
+(60, 12, 6);
+
+
+INSERT INTO division ( name ) VALUES ('SmartDev Russia');
+INSERT INTO division ( name ) VALUES ('SmartDev France');
+INSERT INTO division ( name ) VALUES ('SmartDev Switzerland');
+INSERT INTO division ( name ) VALUES ('SmartDev Germany');
+INSERT INTO division ( name ) VALUES ('SmartDev England');
+INSERT INTO division ( name ) VALUES ('SmartDev Vietnam');
+
+INSERT INTO awards( name ,img) VALUES ('Taca Iberica Rugby', 'https://i.pinimg.com/236x/8c/ae/34/8cae34a020ea258fce4907e9ba8d6c94.jpg');
+INSERT INTO awards( name ,img) VALUES ('OLC', 'https://olc-wordpress-assets.s3.amazonaws.com/uploads/2021/04/OLC-Awards-Thumbnail-1200x800.jpg');
+INSERT INTO awards( name ,img) VALUES ('REC', 'https://d16yj43vx3i1f6.cloudfront.net/uploads/2019/06/Award-cup-getty-image.jpg');
+
+INSERT INTO locations( city ,time_zone) VALUES ('Da Nang', 'GMT +2');
+INSERT INTO locations( city ,time_zone) VALUES ('Ha Noi', 'GMT +2');
+INSERT INTO locations( city ,time_zone) VALUES ('Ho Chi Minh', 'GMT +2');
+
+
+Insert Into process(id, process_name) values
+(1,"Agile development methodology"),
+(2,"DevOps deployment methodology"),
+(3,"Waterfall development method"),
+(4,"Rapid application development");

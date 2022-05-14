@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/fileStore")
+@RequestMapping("/project/fileStore")
 @Slf4j
 public class FileStorageController {
 

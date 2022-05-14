@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/message")
+@RequestMapping("/auth/message")
 @AllArgsConstructor
 public class MessageController {
 

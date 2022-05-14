@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("location")
+@RequestMapping("/persona/location")
 /*@CrossOrigin(origins = "*",maxAge = 3600)*/
 public class LocationController {
 

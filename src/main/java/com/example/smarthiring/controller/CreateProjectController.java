@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/projects/creation/{poId}")
+@RequestMapping("/project/projects/creation/{poId}")
 @RequiredArgsConstructor
 @Slf4j
 public class CreateProjectController {
