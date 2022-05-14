@@ -1,4 +1,4 @@
-package com.example.smarthiring.mappers;
+package com.example.smarthiring.mapper;
 
 
 import com.example.smarthiring.dto.CapabilityLevelDto;
@@ -18,7 +18,7 @@ import java.util.Set;
 public class ProfileMapper {
 
     private ProfileMapper(){}
-    public static ProfileResponseDto toProfileDtoResponse (Profiles profiles, Locations locations, List<CapabilityLevelDto> capabilities, Set<String> positions, Integer english, List<WorkExperiences> workExperiences, List<CertificationDto> certifications, Division division){
+    public static ProfileResponseDto toProfileDtoResponse (Profiles profiles, Locations locations, List<CapabilityLevelDto> capabilities, Set<String> positions, List<WorkExperiences> workExperiences, List<CertificationDto> certifications, Division division){
         ProfileResponseDto profileDtoResponse = new ProfileResponseDto();
         List<WorkExperienceDto> workExperienceDtos = new ArrayList<>();
         profileDtoResponse.setProfileId(profiles.getId());
@@ -29,7 +29,6 @@ public class ProfileMapper {
         profileDtoResponse.setPosition(profiles.getPosition());
         profileDtoResponse.setContractualTerm( profiles.getContractualTerm());
         profileDtoResponse.setLocation( locations.getCity());
-        profileDtoResponse.setEnglish(english);
         for(WorkExperiences workExperiences1 : workExperiences){
             WorkExperienceDto workExperienceDto = new WorkExperienceDto();
             workExperienceDto.setId(workExperiences1.getId());

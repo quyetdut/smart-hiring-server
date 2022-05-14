@@ -1,9 +1,9 @@
 package com.example.smarthiring.controller;
 
-import com.smartdev.iresource.authentication.common.enums.ResponseResult;
-import com.smartdev.iresource.authentication.common.response.ResponseHandler;
-import com.smartdev.iresource.authentication.exception.SomethingWrongException;
-import com.smartdev.iresource.authentication.service.UserService;
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.exception.SomethingWrongException;
+import com.example.smarthiring.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

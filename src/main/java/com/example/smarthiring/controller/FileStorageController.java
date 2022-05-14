@@ -1,9 +1,8 @@
-package com.smartdev.iresource.project.controller;
+package com.example.smarthiring.controller;
 
 
+import com.example.smarthiring.service.implement.FileServiceImpl;
 import com.google.common.net.HttpHeaders;
-import com.smartdev.iresource.project.service.impl.FileServiceImpl;
-
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;

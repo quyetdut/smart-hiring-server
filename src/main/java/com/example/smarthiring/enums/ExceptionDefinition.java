@@ -1,4 +1,4 @@
-package com.example.smarthiring.common.enums;
+package com.example.smarthiring.enums;
 
 import lombok.Getter;
 

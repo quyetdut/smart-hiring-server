@@ -1,18 +1,18 @@
-package com.example.smarthiring.service.impl;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.project.converter.PersonaConverter;
-import com.smartdev.iresource.project.converter.ProjectGetAllConverter;
-import com.smartdev.iresource.project.dto.ProjectCreationDTO;
-import com.smartdev.iresource.project.dto.ProjectInfoDTO;
-import com.smartdev.iresource.project.dto.ProjectPersonasDTO;
-import com.smartdev.iresource.project.entity.*;
-import com.smartdev.iresource.project.exception.FileStorageException;
-import com.smartdev.iresource.project.exception.NotFoundException;
-import com.smartdev.iresource.project.exception.SomethingWrongException;
-import com.smartdev.iresource.project.repository.*;
-import com.smartdev.iresource.project.service.ProjectCreationService;
-import com.smartdev.iresource.project.service.feignclient.service.AuthFeignClientService;
-import com.smartdev.iresource.project.service.feignclient.service.PersonaFeignClientService;
+import com.example.smarthiring.converter.PersonaConverter;
+import com.example.smarthiring.converter.ProjectGetAllConverter;
+import com.example.smarthiring.dto.ProjectCreationDTO;
+import com.example.smarthiring.dto.ProjectInfoDTO;
+import com.example.smarthiring.dto.ProjectPersonasDTO;
+import com.example.smarthiring.entity.*;
+import com.example.smarthiring.entity.Process;
+import com.example.smarthiring.exception.FileStorageException;
+import com.example.smarthiring.exception.NotFoundException;
+import com.example.smarthiring.exception.SomethingWrongException;
+import com.example.smarthiring.repository.*;
+import com.example.smarthiring.service.ProjectCreationService;
+import com.example.smarthiring.service.ServiceUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -24,9 +24,9 @@ import javax.activation.MimetypesFileTypeMap;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.smartdev.iresource.project.common.ErrorLog.*;
-import static com.smartdev.iresource.project.common.ResponseMessage.CREATE_PROJECT_FAILED;
-import static com.smartdev.iresource.project.common.ResponseMessage.INTERNAL_SERVER_ERROR;
+import static com.example.smarthiring.common.ErrorLog.*;
+import static com.example.smarthiring.common.ResponseMessage.CREATE_PROJECT_FAILED;
+import static com.example.smarthiring.common.ResponseMessage.INTERNAL_SERVER_ERROR;
 
 @Service
 @Slf4j
@@ -42,14 +42,15 @@ public class ProjectCreationServiceImpl implements ProjectCreationService {
     private final PersonasTechnicalRepository personasTechnicalRepository;
     private final ProjectPersonasRepository projectPersonasRepository;
     private final ProjectMemberRepository projectMemberRepository;
-    private final AuthFeignClientService authFeignClientService;
-    private final PersonaFeignClientService personaFeignClientService;
     private final FileServiceImpl fileStorageService;
+
+    private final PositionRepository positionRepository;
+    private final ServiceUtil serviceUtil;
 
     @Override
     public Boolean createProject(Integer poId, ProjectCreationDTO projectCreationDTO, MultipartFile imageFile, MultipartFile[] documents) {
         try {
-            if (!authFeignClientService.checkExistsPoId(poId))
+            if (!serviceUtil.isExitPOId(poId))
                 throw new NotFoundException("PO account (id: " + poId + ") is not exist to Create project");
 
             ProjectInfoDTO projectInfoDTO = projectCreationDTO.getProjectInfo();
@@ -141,7 +142,7 @@ public class ProjectCreationServiceImpl implements ProjectCreationService {
 
             if (!members.isEmpty()) {
                 members.forEach(member -> {
-                    if (authFeignClientService.isExistUserId(member.getUserId())) {
+                    if (serviceUtil.isExistUserById(member.getUserId())) {
                         member.setProjectId(projectId);
                         projectMembers.add(member);
                     }
@@ -165,7 +166,7 @@ public class ProjectCreationServiceImpl implements ProjectCreationService {
         try {
             if (!projectPersonas.isEmpty()) {
                 projectPersonas.forEach(position -> {
-                    if (personaFeignClientService.checkExistsPositionId(position.getPositionId())) {
+                    if (positionRepository.existsById(position.getPositionId())) {
                         position.setProjectId(projectId);
                         ProjectPersonas personas = (ProjectPersonas) PersonaConverter.toEntity(position).get("projectPersonas");
                         Set<PersonasTechnical> personasTechnicals =
@@ -195,7 +196,7 @@ public class ProjectCreationServiceImpl implements ProjectCreationService {
             List<PersonasTechnical> technicals = new ArrayList<>();
             if (!personaTechnicals.isEmpty()) {
                 personaTechnicals.forEach(technical -> {
-                    if (personaFeignClientService.checkExistsTechnical(technical.getCapabilitiesId())) {
+                    if (personasTechnicalRepository.existsPersonasTechnicalByCapabilitiesId(technical.getCapabilitiesId())) {
                         technical.setProjectPersonasId(projectPersonasId);
                         technicals.add(technical);
                     }

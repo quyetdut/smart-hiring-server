@@ -1,10 +1,10 @@
-package com.example.smarthiring.service.impl;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.project.entity.ProjectTool;
-import com.smartdev.iresource.project.entity.Tool;
-import com.smartdev.iresource.project.repository.ProjectToolRepository;
-import com.smartdev.iresource.project.repository.ToolRepository;
-import com.smartdev.iresource.project.service.ProjectToolService;
+import com.example.smarthiring.entity.ProjectTool;
+import com.example.smarthiring.entity.Tool;
+import com.example.smarthiring.repository.ProjectToolRepository;
+import com.example.smarthiring.repository.ToolRepository;
+import com.example.smarthiring.service.ProjectToolService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

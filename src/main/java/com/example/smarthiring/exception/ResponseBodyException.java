@@ -1,11 +1,8 @@
-package com.smartdev.iresource.authentication.exception;
+package com.example.smarthiring.exception;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
-
-import java.sql.Timestamp;
-import java.text.*;
 
 
 @Getter

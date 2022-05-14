@@ -1,18 +1,14 @@
-package com.smartdev.iresource.project.controller;
+package com.example.smarthiring.controller;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.dto.*;
+import com.example.smarthiring.enums.CollaborateStatus;
+import com.example.smarthiring.enums.InterestingStatus;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.exception.FileStorageException;
+import com.example.smarthiring.exception.RequestFailedException;
+import com.example.smarthiring.service.ProjectService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.smartdev.iresource.project.common.enums.CollaborateStatus;
-import com.smartdev.iresource.project.common.enums.InterestingStatus;
-import com.smartdev.iresource.project.common.enums.ResponseResult;
-import com.smartdev.iresource.project.common.response.ResponseHandler;
-import com.smartdev.iresource.project.dto.*;
-import com.smartdev.iresource.project.entity.Process;
-import com.smartdev.iresource.project.entity.ProjectMember;
-import com.smartdev.iresource.project.entity.Tool;
-import com.smartdev.iresource.project.exception.FileStorageException;
-import com.smartdev.iresource.project.exception.RequestFailedException;
-import com.smartdev.iresource.project.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -23,11 +19,10 @@ import javax.validation.constraints.Min;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 
-import static com.smartdev.iresource.project.common.ErrorLog.UPDATE_PROJECT_FAILED;
-import static com.smartdev.iresource.project.common.ResponseMessage.NO_CONTENT;
-import static com.smartdev.iresource.project.common.ResponseMessage.OK;
+import static com.example.smarthiring.common.ErrorLog.UPDATE_PROJECT_FAILED;
+import static com.example.smarthiring.common.ResponseMessage.NO_CONTENT;
+
 
 /*@CrossOrigin(origins = "*", maxAge = 3600)*/
 @RestController
@@ -103,19 +98,6 @@ public class ProjectController {
             return result;
         } else {
             return null;
-        }
-    }
-
-    @GetMapping("/get-to-radar-chart")
-    public ResponseEntity<Object> getToRadarChart(@RequestParam(value = "projectId") Integer projectId,
-                                                  @RequestParam(value = "positionId") Integer positionId) {
-        Map<String, List<RadaChartDTO>> result = projectService.getProjectToRadarChart(projectId, positionId);
-        if (result != null) {
-            return ResponseEntity.ok(ResponseHandler.getInstance().response(result, ResponseResult.SUCCESS));
-        } else {
-            ResponseResult responseResult = ResponseResult.SUCCESS;
-            responseResult.customMessage(NO_CONTENT);
-            return ResponseEntity.ok(ResponseHandler.getInstance().response(null, responseResult));
         }
     }
 

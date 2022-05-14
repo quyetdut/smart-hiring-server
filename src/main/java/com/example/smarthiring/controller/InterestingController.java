@@ -1,10 +1,10 @@
-package com.smartdev.iresource.project.controller;
+package com.example.smarthiring.controller;
 
-import com.smartdev.iresource.project.common.enums.InterestingStatus;
-import com.smartdev.iresource.project.common.enums.ResponseResult;
-import com.smartdev.iresource.project.common.response.ResponseHandler;
-import com.smartdev.iresource.project.dto.ProjectUserStatusDTO;
-import com.smartdev.iresource.project.service.ProjectUserStatusService;
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.dto.ProjectUserStatusDTO;
+import com.example.smarthiring.enums.InterestingStatus;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.service.ProjectUserStatusService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

@@ -1,14 +1,14 @@
 package com.example.smarthiring.controller;
 
-import com.smartdev.iresource.personal.common.enums.ResponseResult;
-import com.smartdev.iresource.personal.common.response.ResponseHandler;
-import com.smartdev.iresource.personal.dto.CapabilityDto;
-import com.smartdev.iresource.personal.dto.CapabilityRequestDto;
-import com.smartdev.iresource.personal.entity.Capabilities;
-import com.smartdev.iresource.personal.enums.ExceptionDefinition;
-import com.smartdev.iresource.personal.exceptions.FailException;
-import com.smartdev.iresource.personal.services.CapabilytiesService;
-import com.smartdev.iresource.personal.services.PositionCapabilitiesService;
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.dto.CapabilityDto;
+import com.example.smarthiring.dto.CapabilityRequestDto;
+import com.example.smarthiring.entity.Capabilities;
+import com.example.smarthiring.enums.ExceptionDefinition;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.exception.FailException;
+import com.example.smarthiring.service.CapabilytiesService;
+import com.example.smarthiring.service.PositionCapabilitiesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

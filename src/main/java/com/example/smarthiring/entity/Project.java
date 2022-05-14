@@ -1,6 +1,6 @@
-package com.smartdev.iresource.project.entity;
+package com.example.smarthiring.entity;
 
-import com.smartdev.iresource.project.common.ProjectStatus;
+import com.example.smarthiring.common.ProjectStatus;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

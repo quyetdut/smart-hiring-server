@@ -1,16 +1,15 @@
-package com.smartdev.iresource.project.converter;
+package com.example.smarthiring.converter;
 
+import com.example.smarthiring.dto.ProjectInfoDTO;
+import com.example.smarthiring.dto.ProjectPersonasDTO;
+import com.example.smarthiring.dto.ProjectResponseDTO;
+import com.example.smarthiring.entity.Document;
+import com.example.smarthiring.entity.*;
 
-import com.smartdev.iresource.project.dto.ProjectInfoDTO;
-import com.smartdev.iresource.project.dto.ProjectPersonasDTO;
-import com.smartdev.iresource.project.dto.ProjectResponseDTO;
-import com.smartdev.iresource.project.entity.Process;
-import com.smartdev.iresource.project.entity.*;
+import com.example.smarthiring.entity.Process;
 import lombok.extern.slf4j.Slf4j;
 
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 @Slf4j

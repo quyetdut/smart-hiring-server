@@ -1,4 +1,4 @@
-package com.smartdev.common.enums;
+package com.example.smarthiring.enums;
 
 public interface IResponseResult {
     int getCode();

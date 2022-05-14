@@ -1,4 +1,4 @@
-package com.smartdev.iresource.personal.dto;
+package com.example.smarthiring.dto;
 
 import lombok.Getter;
 import lombok.Setter;

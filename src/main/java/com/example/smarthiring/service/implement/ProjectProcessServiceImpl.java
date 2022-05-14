@@ -1,12 +1,13 @@
-package com.example.smarthiring.service.impl;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.project.entity.ProjectProcess;
-import com.smartdev.iresource.project.repository.ProcessRepository;
-import com.smartdev.iresource.project.repository.ProjectProcessRepository;
-import com.smartdev.iresource.project.service.ProjectProcessService;
+import com.example.smarthiring.entity.ProjectProcess;
+import com.example.smarthiring.repository.ProcessRepository;
+import com.example.smarthiring.repository.ProjectProcessRepository;
+import com.example.smarthiring.service.ProjectProcessService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.example.smarthiring.entity.Process;
 
 import java.util.ArrayList;
 import java.util.HashSet;

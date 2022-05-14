@@ -1,9 +1,9 @@
-package com.example.smarthiring.services.implement;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.personal.dto.CapabilityLevelDto;
-import com.smartdev.iresource.personal.entity.ProfileCapabilities;
-import com.smartdev.iresource.personal.repository.ProfileCapabilitiesRepository;
-import com.smartdev.iresource.personal.services.ProfileCapabilitiesService;
+import com.example.smarthiring.dto.CapabilityLevelDto;
+import com.example.smarthiring.entity.ProfileCapabilities;
+import com.example.smarthiring.repository.ProfileCapabilitiesRepository;
+import com.example.smarthiring.service.ProfileCapabilitiesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

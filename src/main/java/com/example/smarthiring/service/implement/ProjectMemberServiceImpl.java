@@ -1,12 +1,11 @@
-package com.example.smarthiring.service.impl;
-
-import com.smartdev.iresource.project.common.ErrorLog;
-import com.smartdev.iresource.project.common.ResponseMessage;
-import com.smartdev.iresource.project.dto.ProjectUserStatusDTO;
-import com.smartdev.iresource.project.entity.ProjectMember;
-import com.smartdev.iresource.project.exception.SomethingWrongException;
-import com.smartdev.iresource.project.repository.ProjectMemberRepository;
-import com.smartdev.iresource.project.service.ProjectMemberService;
+package com.example.smarthiring.service.implement;
+import com.example.smarthiring.common.ErrorLog;
+import com.example.smarthiring.common.ResponseMessage;
+import com.example.smarthiring.dto.ProjectUserStatusDTO;
+import com.example.smarthiring.entity.ProjectMember;
+import com.example.smarthiring.exception.SomethingWrongException;
+import com.example.smarthiring.repository.ProjectMemberRepository;
+import com.example.smarthiring.service.ProjectMemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

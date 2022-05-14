@@ -1,8 +1,8 @@
-package com.smartdev.iresource.authentication.mapper;
+package com.example.smarthiring.mapper;
 
-import com.smartdev.iresource.authentication.dto.UserDTO;
-import com.smartdev.iresource.authentication.entity.Role;
-import com.smartdev.iresource.authentication.entity.User;
+import com.example.smarthiring.dto.UserDTO;
+import com.example.smarthiring.entity.Role;
+import com.example.smarthiring.entity.User;
 
 import java.util.HashSet;
 import java.util.Set;

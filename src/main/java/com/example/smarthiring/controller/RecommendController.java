@@ -1,11 +1,11 @@
-package com.example.smarthiring.controllers;
+package com.example.smarthiring.controller;
 
-import com.smartdev.iresource.personal.common.enums.ResponseResult;
-import com.smartdev.iresource.personal.common.response.ResponseHandler;
-import com.smartdev.iresource.personal.dto.PageProjectMatchingDto;
-import com.smartdev.iresource.personal.dto.ProjectMatchingDto;
-import com.smartdev.iresource.personal.exceptions.NotFoundException;
-import com.smartdev.iresource.personal.services.ProjectMatchingService;
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.dto.PageProjectMatchingDto;
+import com.example.smarthiring.dto.ProjectMatchingDto;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.exception.NotFoundException;
+import com.example.smarthiring.service.ProjectMatchingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

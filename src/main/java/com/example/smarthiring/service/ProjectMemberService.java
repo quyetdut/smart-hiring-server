@@ -1,7 +1,7 @@
-package com.smartdev.iresource.project.service;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.project.dto.ProjectUserStatusDTO;
-import com.smartdev.iresource.project.entity.ProjectMember;
+import com.example.smarthiring.dto.ProjectUserStatusDTO;
+import com.example.smarthiring.entity.ProjectMember;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;

@@ -1,14 +1,14 @@
-package com.example.smarthiring.service.impl;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.authentication.email.EmailService;
-import com.smartdev.iresource.authentication.entity.ConfirmationToken;
-import com.smartdev.iresource.authentication.entity.User;
-import com.smartdev.iresource.authentication.enums.ConfirmToken;
-import com.smartdev.iresource.authentication.enums.ConfirmationType;
-import com.smartdev.iresource.authentication.exception.RegistrationFailedException;
-import com.smartdev.iresource.authentication.repository.ConfirmationTokenRepository;
-import com.smartdev.iresource.authentication.repository.UserRepository;
-import com.smartdev.iresource.authentication.service.ConfirmationTokenService;
+import com.example.smarthiring.email.EmailService;
+import com.example.smarthiring.entity.ConfirmationToken;
+import com.example.smarthiring.entity.User;
+import com.example.smarthiring.enums.ConfirmToken;
+import com.example.smarthiring.enums.ConfirmationType;
+import com.example.smarthiring.exception.RegistrationFailedException;
+import com.example.smarthiring.repository.ConfirmationTokenRepository;
+import com.example.smarthiring.repository.UserRepository;
+import com.example.smarthiring.service.ConfirmationTokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailAuthenticationException;

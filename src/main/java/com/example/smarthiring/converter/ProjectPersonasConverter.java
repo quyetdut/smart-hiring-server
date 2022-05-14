@@ -1,16 +1,10 @@
-package com.smartdev.iresource.project.converter;
+package com.example.smarthiring.converter;
 
-import com.smartdev.iresource.project.common.vo.Capabilities;
-import com.smartdev.iresource.project.common.vo.Position;
-import com.smartdev.iresource.project.dto.PersonasTechnicalDTO;
-import com.smartdev.iresource.project.dto.ProjectPersonasDTO;
-import com.smartdev.iresource.project.entity.PersonasTechnical;
-import com.smartdev.iresource.project.entity.ProjectPersonas;
-import com.smartdev.iresource.project.service.feignclient.service.PersonaFeignClientService;
-import lombok.AllArgsConstructor;
+import com.example.smarthiring.dto.PersonasTechnicalDTO;
+import com.example.smarthiring.dto.ProjectPersonasDTO;
+import com.example.smarthiring.entity.Position;
+import com.example.smarthiring.entity.ProjectPersonas;
 
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class ProjectPersonasConverter {

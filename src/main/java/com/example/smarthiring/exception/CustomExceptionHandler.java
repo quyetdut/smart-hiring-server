@@ -1,7 +1,7 @@
-package com.smartdev.iresource.project.exception;
+package com.example.smarthiring.exception;
 
-import com.smartdev.iresource.project.common.ExceptionResponse;
-import feign.FeignException;
+
+import com.example.smarthiring.common.ExceptionResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,15 +17,6 @@ public class CustomExceptionHandler {
         return new ExceptionResponse(
                 exception.getMessage()
         );
-    }
-
-    @ExceptionHandler(FeignException.class)
-    public final ResponseEntity<ExceptionResponse> feignFail(FeignException feignException) {
-
-        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
-        ExceptionResponse exceptionResponse = getErrorResponse(feignException);
-
-        return new ResponseEntity<>(exceptionResponse, httpStatus);
     }
 
     @ExceptionHandler(NotFoundException.class)

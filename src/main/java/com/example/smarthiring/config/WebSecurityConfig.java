@@ -1,12 +1,11 @@
-package com.smartdev.iresource.authentication.config;
+package com.example.smarthiring.config;
 
-import com.smartdev.iresource.authentication.common.feignclient.PersonalFeignClient;
-import com.smartdev.iresource.authentication.exception.AuthEntryPointJwtException;
-import com.smartdev.iresource.authentication.security.AuthEmailAndPasswordFilter;
-import com.smartdev.iresource.authentication.security.AuthJwtTokenFilter;
-import com.smartdev.iresource.authentication.service.impl.PersonaFeignClientService;
-import com.smartdev.iresource.authentication.service.impl.UserServiceImpl;
-import com.smartdev.iresource.authentication.utility.JwtUtils;
+import com.example.smarthiring.exception.AuthEntryPointJwtException;
+import com.example.smarthiring.security.AuthEmailAndPasswordFilter;
+import com.example.smarthiring.security.AuthJwtTokenFilter;
+import com.example.smarthiring.service.ProfileService;
+import com.example.smarthiring.service.implement.UserServiceImpl;
+import com.example.smarthiring.utility.JwtUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,8 +28,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final AuthEntryPointJwtException unauthorizedHandler;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtils jwtUtils;
-    private final PersonalFeignClient personalFeignClient;
-    private final PersonaFeignClientService personaFeignClientService;
+
+    private final ProfileService profileService;
 
     @Bean
     public AuthJwtTokenFilter authJwtTokenFilter() {
@@ -57,9 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 userService,
                 this.authenticationManager(),
                 jwtUtils,
-                personalFeignClient,
-                personaFeignClientService
-
+                profileService
         );
         authEmailAndPasswordFilter.setFilterProcessesUrl("/sign-in");
 

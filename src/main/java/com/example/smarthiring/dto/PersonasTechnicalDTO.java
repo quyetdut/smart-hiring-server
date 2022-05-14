@@ -1,4 +1,4 @@
-package com.smartdev.iresource.project.dto;
+package com.example.smarthiring.dto;
 
 
 import lombok.AllArgsConstructor;

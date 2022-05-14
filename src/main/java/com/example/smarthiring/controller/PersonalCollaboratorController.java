@@ -1,9 +1,9 @@
-package com.example.smarthiring.controllers;
+package com.example.smarthiring.controller;
 
-import com.smartdev.iresource.personal.common.enums.ResponseResult;
-import com.smartdev.iresource.personal.common.response.ResponseHandler;
-import com.smartdev.iresource.personal.dto.ProjectCollaboratorDto;
-import com.smartdev.iresource.personal.services.ProfileService;
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.dto.ProjectCollaboratorDto;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.service.ProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,10 +1,9 @@
-package com.smartdev.iresource.authentication.service;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.authentication.entity.ConfirmationToken;
-import com.smartdev.iresource.authentication.entity.User;
-import com.smartdev.iresource.authentication.enums.ConfirmToken;
-import com.smartdev.iresource.authentication.enums.ConfirmationType;
-import org.springframework.http.ResponseEntity;
+import com.example.smarthiring.entity.ConfirmationToken;
+import com.example.smarthiring.entity.User;
+import com.example.smarthiring.enums.ConfirmToken;
+import com.example.smarthiring.enums.ConfirmationType;
 
 import javax.mail.MessagingException;
 

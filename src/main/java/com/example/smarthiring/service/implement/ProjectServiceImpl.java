@@ -1,26 +1,21 @@
-package com.example.smarthiring.service.impl;
+package com.example.smarthiring.service.implement;
 
+import com.example.smarthiring.common.ResponseMessage;
+import com.example.smarthiring.common.vo.MatchingScore;
+import com.example.smarthiring.common.vo.radarchart.object.MatchingSkill;
+import com.example.smarthiring.converter.PersonaConverter;
+import com.example.smarthiring.converter.PersonasTechnicalConvertor;
+import com.example.smarthiring.converter.ProjectGetAllConverter;
+import com.example.smarthiring.dto.*;
+import com.example.smarthiring.entity.*;
+import com.example.smarthiring.entity.Process;
+import com.example.smarthiring.enums.CollaborateStatus;
+import com.example.smarthiring.enums.InterestingStatus;
+import com.example.smarthiring.exception.NotFoundException;
+import com.example.smarthiring.exception.SomethingWrongException;
+import com.example.smarthiring.repository.*;
+import com.example.smarthiring.service.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.smartdev.iresource.project.common.ResponseMessage;
-import com.smartdev.iresource.project.common.enums.CollaborateStatus;
-import com.smartdev.iresource.project.common.enums.InterestingStatus;
-import com.smartdev.iresource.project.common.vo.Capabilities;
-import com.smartdev.iresource.project.common.vo.MatchingScore;
-import com.smartdev.iresource.project.common.vo.Position;
-import com.smartdev.iresource.project.common.vo.radarchart.object.MatchingSkill;
-import com.smartdev.iresource.project.converter.PersonaConverter;
-import com.smartdev.iresource.project.converter.PersonasTechnicalConvertor;
-import com.smartdev.iresource.project.converter.ProjectGetAllConverter;
-import com.smartdev.iresource.project.dto.*;
-import com.smartdev.iresource.project.entity.*;
-import com.smartdev.iresource.project.exception.NotFoundException;
-import com.smartdev.iresource.project.exception.SomethingWrongException;
-import com.smartdev.iresource.project.repository.*;
-import com.smartdev.iresource.project.service.ProjectProcessService;
-import com.smartdev.iresource.project.service.ProjectService;
-import com.smartdev.iresource.project.service.ProjectToolService;
-import com.smartdev.iresource.project.service.feignclient.service.AuthFeignClientService;
-import com.smartdev.iresource.project.service.feignclient.service.PersonaFeignClientService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -54,15 +49,14 @@ public class ProjectServiceImpl implements ProjectService, ResponseMessage {
     private final ProjectUserStatusRepository projectUserStatusRepository;
     private final ProjectProcessRepository projectProcessRepository;
     private final ProjectToolRepository projectToolRepository;
-
     private final ProjectToolService projectToolService;
     private final ProjectProcessService projectProcessService;
 
-    private final PersonaFeignClientService personaFeignClientService;
-    private final AuthFeignClientService authFeignClientService;
-
     private final ProjectCreationServiceImpl projectCreationServiceImpl;
     private final FileServiceImpl fileStorageService;
+
+    private final PositionService positionService;
+    private final CapabilytiesService capabilytiesService;
 
     @Override
     public Map<String, Object> getAllProject(Integer poId, Integer page, String projectName) {
@@ -86,10 +80,10 @@ public class ProjectServiceImpl implements ProjectService, ResponseMessage {
                             ProjectPersonasDTO personasDTO;
                             Set<PersonasTechnical> projectTechnicals = personasTechnicalRepository.findAllByProjectPersonasId(projectPersonasItem.getId()).get();
                             Set<PersonasTechnicalDTO> technicalDTOS = new HashSet<>();
-                            Position position = personaFeignClientService.getPosition(projectPersonasItem.getPositionId());
+                            Position position = positionService.getPositionById(projectPersonasItem.getPositionId());
 
                             projectTechnicals.forEach(technical -> {
-                                Capabilities capabilities = personaFeignClientService.getCapabilities(technical.getCapabilitiesId());
+                                Capabilities capabilities = capabilytiesService.getCapabilityByid(technical.getCapabilitiesId());
 
                                 technicalDTOS.add(PersonasTechnicalConvertor.toDTO(technical, capabilities));
                             });
@@ -118,10 +112,10 @@ public class ProjectServiceImpl implements ProjectService, ResponseMessage {
                             ProjectPersonasDTO personasDTO;
                             Set<PersonasTechnical> projectTechnicals = personasTechnicalRepository.findAllByProjectPersonasId(projectPersonasItem.getId()).get();
                             Set<PersonasTechnicalDTO> technicalDTOS = new HashSet<>();
-                            Position position = personaFeignClientService.getPosition(projectPersonasItem.getPositionId());
+                            Position position = positionService.getPositionById(projectPersonasItem.getPositionId());
 
                             projectTechnicals.forEach(technical -> {
-                                Capabilities capabilities = personaFeignClientService.getCapabilities(technical.getCapabilitiesId());
+                                Capabilities capabilities = capabilytiesService.getCapabilityByid(technical.getCapabilitiesId());
 
                                 technicalDTOS.add(PersonasTechnicalConvertor.toDTO(technical, capabilities));
                             });
@@ -153,10 +147,10 @@ public class ProjectServiceImpl implements ProjectService, ResponseMessage {
                             ProjectPersonasDTO personasDTO;
                             Set<PersonasTechnical> projectTechnicals = personasTechnicalRepository.findAllByProjectPersonasId(projectPersonasItem.getId()).get();
                             Set<PersonasTechnicalDTO> technicalDTOS = new HashSet<>();
-                            Position position = personaFeignClientService.getPosition(projectPersonasItem.getPositionId());
+                            Position position = positionService.getPositionById(projectPersonasItem.getPositionId());
 
                             projectTechnicals.forEach(technical -> {
-                                Capabilities capabilities = personaFeignClientService.getCapabilities(technical.getCapabilitiesId());
+                                Capabilities capabilities = capabilytiesService.getCapabilityByid(technical.getCapabilitiesId());
 
                                 technicalDTOS.add(PersonasTechnicalConvertor.toDTO(technical, capabilities));
                             });
@@ -192,10 +186,10 @@ public class ProjectServiceImpl implements ProjectService, ResponseMessage {
                             Set<PersonasTechnical> projectTechnicals = personasTechnicalRepository.findAllByProjectPersonasId(projectPersonasItem.getId()).get();
                             Set<PersonasTechnicalDTO> technicalDTOS = new HashSet<>();
 
-                            Position position = personaFeignClientService.getPosition(projectPersonasItem.getPositionId());
+                            Position position = positionService.getPositionById(projectPersonasItem.getPositionId());
 
                             projectTechnicals.forEach(technical -> {
-                                Capabilities capabilities = personaFeignClientService.getCapabilities(technical.getCapabilitiesId());
+                                Capabilities capabilities = capabilytiesService.getCapabilityByid(technical.getCapabilitiesId());
 
                                 technicalDTOS.add(PersonasTechnicalConvertor.toDTO(technical, capabilities));
                             });
@@ -248,10 +242,10 @@ public class ProjectServiceImpl implements ProjectService, ResponseMessage {
                 Set<PersonasTechnical> projectTechnicals = personasTechnicalRepository.findAllByProjectPersonasId(projectPersonasItem.getId()).get();
                 Set<PersonasTechnicalDTO> technicalDTOS = new HashSet<>();
 
-                Position position = personaFeignClientService.getPosition(projectPersonasItem.getPositionId());
+                Position position = positionService.getPositionById(projectPersonasItem.getPositionId());
 
                 projectTechnicals.forEach(technical -> {
-                    Capabilities capabilities = personaFeignClientService.getCapabilities(technical.getCapabilitiesId());
+                    Capabilities capabilities = capabilytiesService.getCapabilityByid(technical.getCapabilitiesId());
 
                     technicalDTOS.add(PersonasTechnicalConvertor.toDTO(technical, capabilities));
                 });
@@ -300,8 +294,8 @@ public class ProjectServiceImpl implements ProjectService, ResponseMessage {
 
         List<String> skills = new ArrayList<>();
         allByProjectPersonasId.forEach(
-                personasTechnical -> skills.add(personaFeignClientService.getCapabilities(
-                        personasTechnical.getCapabilitiesId()).getName()));
+                personasTechnical -> skills.add(
+                        capabilytiesService.getCapabilityByid(personasTechnical.getCapabilitiesId()).getName()));
         String skillNeed = String.join(", ", skills);
 
         GetMatchingScoreDTO requestBody = new GetMatchingScoreDTO(
@@ -337,29 +331,6 @@ public class ProjectServiceImpl implements ProjectService, ResponseMessage {
         return null;
     }
 
-    @Override
-    public Map<String, List<RadaChartDTO>> getProjectToRadarChart(Integer projectId, Integer positionId) {
-        // list member will respond
-        List<RadaChartDTO> memberResponse = new ArrayList<>();
-        String positionName = personaFeignClientService.getPosition(positionId).getName();
-        List<MatchingScore> matchingScoreList = getMatchingScore(projectId, positionId, positionName);
-
-        log.warn("is matchingScoreList is null ?: {}", matchingScoreList);
-
-        for (MatchingScore matchingScore : matchingScoreList) {
-            RadaChartDTO radaChartDTO = personaFeignClientService
-                    .getToRadaChart(matchingScore.getUserId(), positionId);
-            radaChartDTO.setMatch(matchingScore.getResult());
-            memberResponse.add(radaChartDTO);
-        }
-
-        Map<String, List<RadaChartDTO>> response = new HashMap<>();
-
-        response.put("member", memberResponse);
-
-        return response;
-    }
-
     private ProjectResponseDTO projectResponseDetail(Project project) {
         Set<Tool> tools = projectToolService.getToolByProjectId(project.getId());
         Set<Process> processes = projectProcessService.getProcessByProjectId(project.getId());
@@ -371,10 +342,10 @@ public class ProjectServiceImpl implements ProjectService, ResponseMessage {
             ProjectPersonasDTO personasDTO;
             Set<PersonasTechnical> projectTechnicals = personasTechnicalRepository.findAllByProjectPersonasId(projectPersonasItem.getId()).get();
             Set<PersonasTechnicalDTO> technicalDTOS = new HashSet<>();
-            Position position = personaFeignClientService.getPosition(projectPersonasItem.getPositionId());
+            Position position = positionService.getPositionById(projectPersonasItem.getPositionId());
 
             projectTechnicals.forEach(technical -> {
-                Capabilities capabilities = personaFeignClientService.getCapabilities(technical.getCapabilitiesId());
+                Capabilities capabilities = capabilytiesService.getCapabilityByid(technical.getCapabilitiesId());
 
                 technicalDTOS.add(PersonasTechnicalConvertor.toDTO(technical, capabilities));
             });

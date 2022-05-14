@@ -1,6 +1,7 @@
-package com.example.smarthiring.services;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.personal.dto.CertificationDto;
+
+import com.example.smarthiring.dto.CertificationDto;
 
 public interface CertifcationService {
     CertificationDto createAndUpdate(Integer profileId, CertificationDto certificationDto);

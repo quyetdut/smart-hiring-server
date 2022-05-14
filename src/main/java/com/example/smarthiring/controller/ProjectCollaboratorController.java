@@ -1,10 +1,10 @@
 package com.example.smarthiring.controller;
 
-import com.smartdev.iresource.project.common.enums.CollaborateStatus;
-import com.smartdev.iresource.project.common.enums.ResponseResult;
-import com.smartdev.iresource.project.common.response.ResponseHandler;
-import com.smartdev.iresource.project.dto.ProjectUserStatusDTO;
-import com.smartdev.iresource.project.service.ProjectUserStatusService;
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.dto.ProjectUserStatusDTO;
+import com.example.smarthiring.enums.CollaborateStatus;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.service.ProjectUserStatusService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/collaborator")
 @AllArgsConstructor
-public class CollaboratorController {
+public class ProjectCollaboratorController {
 
 
     private ProjectUserStatusService projectUserStatusService;

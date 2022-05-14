@@ -1,6 +1,6 @@
-package com.smartdev.iresource.personal.repository;
+package com.example.smarthiring.repository;
 
-import com.smartdev.iresource.personal.entity.ProfileCapabilities;
+import com.example.smarthiring.entity.ProfileCapabilities;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

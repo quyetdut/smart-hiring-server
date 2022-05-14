@@ -1,6 +1,5 @@
-package com.smartdev.iresource.personal.entity;
+package com.example.smarthiring.entity;
 
-import io.swagger.models.auth.In;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

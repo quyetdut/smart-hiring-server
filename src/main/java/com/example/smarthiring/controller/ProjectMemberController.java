@@ -1,19 +1,17 @@
-package com.smartdev.iresource.project.controller;
+package com.example.smarthiring.controller;
 
 
-import com.smartdev.iresource.project.dto.UserPositionInteractReportDto;
-import com.smartdev.iresource.project.dto.ProjectUserStatusDTO;
-import com.smartdev.iresource.project.service.ProjectMemberService;
-import com.smartdev.iresource.project.service.ProjectUserStatusService;
+import com.example.smarthiring.dto.ProjectUserStatusDTO;
+import com.example.smarthiring.dto.UserPositionInteractReportDto;
+import com.example.smarthiring.service.ProjectMemberService;
+import com.example.smarthiring.service.ProjectUserStatusService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 

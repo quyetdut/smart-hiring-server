@@ -1,6 +1,6 @@
-package com.smartdev.iresource.project.repository;
+package com.example.smarthiring.repository;
 
-import com.smartdev.iresource.project.entity.ProjectMember;
+import com.example.smarthiring.entity.ProjectMember;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

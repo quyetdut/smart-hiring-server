@@ -1,17 +1,19 @@
-package com.example.smarthiring.services.implement;
+package com.example.smarthiring.service.implement;
 
+import com.example.smarthiring.dto.*;
+import com.example.smarthiring.entity.Position;
+import com.example.smarthiring.entity.Profiles;
+import com.example.smarthiring.entity.ProjectMatching;
+import com.example.smarthiring.enums.ExceptionDefinition;
+import com.example.smarthiring.exception.NotFoundException;
+import com.example.smarthiring.repository.PositionRepository;
+import com.example.smarthiring.repository.ProfileRepository;
+import com.example.smarthiring.repository.ProjectMatchingRepository;
+import com.example.smarthiring.service.CapabilytiesService;
+import com.example.smarthiring.service.ProjectMatchingService;
+import com.example.smarthiring.service.ProjectService;
+import com.example.smarthiring.service.ServiceUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.smartdev.iresource.personal.common.enums.ExceptionDefinition;
-import com.smartdev.iresource.personal.dto.*;
-import com.smartdev.iresource.personal.entity.Position;
-import com.smartdev.iresource.personal.entity.Profiles;
-import com.smartdev.iresource.personal.entity.ProjectMatching;
-import com.smartdev.iresource.personal.exceptions.NotFoundException;
-import com.smartdev.iresource.personal.repository.PositionRepository;
-import com.smartdev.iresource.personal.repository.ProfileRepository;
-import com.smartdev.iresource.personal.repository.ProjectMatchingRepository;
-import com.smartdev.iresource.personal.services.CapabilytiesService;
-import com.smartdev.iresource.personal.services.ProjectMatchingService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
@@ -39,13 +41,16 @@ public class ProjectMatchingServiceImpl implements ProjectMatchingService {
     private ProjectMatchingRepository projectMatchingRepository;
 
     @Autowired
-    private ProjectFeignClientServiceImpl projectFeignClientServiceImpl;
-
-    @Autowired
     private PositionRepository positionRepository;
 
     @Autowired
     private CapabilytiesService capabilytiesService;
+
+    @Autowired
+    private ServiceUtil serviceUtil;
+
+    @Autowired
+    private ProjectService projectService;
 
     private static final String MATCHING_SCORE = "matchingScore";
 
@@ -53,7 +58,7 @@ public class ProjectMatchingServiceImpl implements ProjectMatchingService {
     public boolean saveMatchingScore(ProjectMatchingDto projectMatchingDto) {
         Profiles profile = profileRepository.findByUserId(projectMatchingDto.getUserId()).orElseThrow(() -> new NotFoundException(ExceptionDefinition.PROFILE_NOT_FOUND.getMessage(), ExceptionDefinition.PROFILE_NOT_FOUND.getErrorCode()));
 
-        Object object = projectFeignClientServiceImpl.getProjectSkills(projectMatchingDto.getProjectId());
+        Object object = projectService.getProjectSkills(projectMatchingDto.getProjectId());
 
         try {
             ProjectMatching projectMatching = projectMatchingRepository.findByProjectIdAndProfileId(projectMatchingDto.getProjectId(), profile.getId()).orElse(null);
@@ -94,7 +99,7 @@ public class ProjectMatchingServiceImpl implements ProjectMatchingService {
             PageProjectMatchingDto pageProjectMatchingDto = new PageProjectMatchingDto();
             List<ProjectMatchingResponseDto> projectMatchingResponseDtos = new ArrayList<>();
 
-            Map<Integer, Object> mapProjects = projectFeignClientServiceImpl.getProjectsByIdList(projectMatchingPage.getContent().stream().map(pm -> pm.getProjectId()).collect(Collectors.toList()));
+            Map<Integer, Object> mapProjects = projectService.getMapProjects((projectMatchingPage.getContent().stream().map(pm -> pm.getProjectId()).collect(Collectors.toList())));
             projectMatchingPage.getContent().forEach(pj -> {
                 ProjectMatchingResponseDto dto = new ProjectMatchingResponseDto();
                 dto.setMatchingScore(pj.getMatchingScore());

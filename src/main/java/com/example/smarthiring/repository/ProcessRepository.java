@@ -1,9 +1,9 @@
-package com.smartdev.iresource.project.repository;
+package com.example.smarthiring.repository;
 
-import com.smartdev.iresource.project.entity.Process;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
+import  com.example.smarthiring.entity.Process;
 import java.util.Optional;
 
 @Repository

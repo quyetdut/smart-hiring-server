@@ -1,6 +1,6 @@
-package com.smartdev.iresource.personal.repository;
+package com.example.smarthiring.repository;
 
-import com.smartdev.iresource.personal.entity.ProjectMatching;
+import com.example.smarthiring.entity.ProjectMatching;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

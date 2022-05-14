@@ -1,8 +1,11 @@
-package com.smartdev.iresource.project.service;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.project.common.enums.CollaborateStatus;
-import com.smartdev.iresource.project.common.enums.InterestingStatus;
-import com.smartdev.iresource.project.dto.*;
+import com.example.smarthiring.dto.ProjectInfoDTO;
+import com.example.smarthiring.dto.ProjectResponseDTO;
+import com.example.smarthiring.dto.ProjectSkillsDTO;
+import com.example.smarthiring.dto.RadaChartDTO;
+import com.example.smarthiring.enums.CollaborateStatus;
+import com.example.smarthiring.enums.InterestingStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -13,8 +16,6 @@ public interface ProjectService {
     Integer createProject(ProjectInfoDTO projectInfoDTO, Integer poId, MultipartFile imageFile);
 
     Map<String, Object> getAllProject(Integer poId, Integer page, String projectName);
-
-    Map<String, List<RadaChartDTO>> getProjectToRadarChart(Integer projectId, Integer positionId);
 
     ProjectResponseDTO getProject(Integer projectId);
 

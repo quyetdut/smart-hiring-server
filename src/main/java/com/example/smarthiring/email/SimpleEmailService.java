@@ -1,4 +1,4 @@
-package com.smartdev.iresource.authentication.email;
+package com.example.smarthiring.email;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.MailAuthenticationException;

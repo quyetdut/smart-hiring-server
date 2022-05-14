@@ -1,11 +1,9 @@
-package com.smartdev.iresource.project.controller;
+package com.example.smarthiring.controller;
 
-import com.smartdev.iresource.project.common.ResponseMessage;
-import com.smartdev.iresource.project.common.enums.ResponseResult;
-import com.smartdev.iresource.project.common.response.ResponseHandler;
-import com.smartdev.iresource.project.dto.ProjectPersonasDTO;
-import com.smartdev.iresource.project.service.ProjectPersonasService;
-import lombok.AllArgsConstructor;
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.dto.ProjectPersonasDTO;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.service.ProjectPersonasService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.smartdev.iresource.authentication.dto;
+package com.example.smarthiring.dto;
 
 import lombok.Data;
 

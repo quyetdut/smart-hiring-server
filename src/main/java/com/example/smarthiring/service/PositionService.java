@@ -1,7 +1,8 @@
-package com.example.smarthiring.services;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.personal.dto.PositionRequestDto;
-import com.smartdev.iresource.personal.entity.Position;
+
+import com.example.smarthiring.dto.PositionRequestDto;
+import com.example.smarthiring.entity.Position;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package com.smartdev.iresource.project.service;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.project.dto.DocumentDeleteDto;
-import com.smartdev.iresource.project.dto.DocumentDto;
+import com.example.smarthiring.dto.DocumentDeleteDto;
+import com.example.smarthiring.dto.DocumentDto;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;

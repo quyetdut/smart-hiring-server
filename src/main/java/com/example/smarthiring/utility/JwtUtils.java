@@ -1,7 +1,7 @@
-package com.smartdev.iresource.authentication.utility;
+package com.example.smarthiring.utility;
 
-import com.smartdev.iresource.authentication.entity.User;
-import com.smartdev.iresource.authentication.security.JwtConfig;
+import com.example.smarthiring.entity.User;
+import com.example.smarthiring.security.JwtConfig;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.AllArgsConstructor;

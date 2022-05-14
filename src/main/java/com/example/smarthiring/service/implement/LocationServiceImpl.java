@@ -1,11 +1,11 @@
-package com.example.smarthiring.services.implement;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.personal.common.enums.ExceptionDefinition;
-import com.smartdev.iresource.personal.dto.LocationRequestDto;
-import com.smartdev.iresource.personal.entity.Locations;
-import com.smartdev.iresource.personal.exceptions.FailException;
-import com.smartdev.iresource.personal.repository.LocationRepository;
-import com.smartdev.iresource.personal.services.LocationService;
+import com.example.smarthiring.dto.LocationRequestDto;
+import com.example.smarthiring.entity.Locations;
+import com.example.smarthiring.enums.ExceptionDefinition;
+import com.example.smarthiring.exception.FailException;
+import com.example.smarthiring.repository.LocationRepository;
+import com.example.smarthiring.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,18 +1,14 @@
-package com.example.smarthiring.services.implement;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.personal.common.enums.ExceptionDefinition;
-import com.smartdev.iresource.personal.common.enums.InterestingStatus;
-import com.smartdev.iresource.personal.common.feignclient.AuthFeignClient;
-import com.smartdev.iresource.personal.dto.*;
-import com.smartdev.iresource.personal.dto.CapabilityLevelDto;
-import com.smartdev.iresource.personal.entity.*;
-import com.smartdev.iresource.personal.exceptions.FailException;
-import com.smartdev.iresource.personal.exceptions.NotFoundException;
-import com.smartdev.iresource.personal.mappers.ProfileMapper;
-import com.smartdev.iresource.personal.repository.*;
-import com.smartdev.iresource.personal.services.EnglishService;
-import com.smartdev.iresource.personal.services.ProfileService;
-import com.smartdev.iresource.personal.services.WorkExperienceService;
+import com.example.smarthiring.dto.*;
+import com.example.smarthiring.entity.*;
+import com.example.smarthiring.enums.ExceptionDefinition;
+import com.example.smarthiring.enums.InterestingStatus;
+import com.example.smarthiring.exception.FailException;
+import com.example.smarthiring.exception.NotFoundException;
+import com.example.smarthiring.mapper.ProfileMapper;
+import com.example.smarthiring.repository.*;
+import com.example.smarthiring.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -56,15 +52,17 @@ public class ProfileServiceImpl implements ProfileService {
     @Autowired
     private DivisionRepository divisionRepository;
     @Autowired
-    private ProjectFeignClientServiceImpl projectFeignClientServiceImpl;
-    @Autowired
     private ProjectMatchingRepository projectMatchingRepository;
 
     @Autowired
-    private EnglishService englishService;
+    private ServiceUtil serviceUtil;
 
     @Autowired
-    private AuthFeignClient authFeignClient;
+    private ProjectPersonasService projectPersonasService;
+
+    @Autowired
+    private ProjectUserStatusService projectUserStatusService;
+
 
     @Override
     public Boolean createProfile(ProfileDto profileDto) {
@@ -144,20 +142,13 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public  ProfileResponseDto getProfileByUserId(Integer userId){
+    public ProfileResponseDto getProfileByUserId(Integer userId){
         // get profile
         Profiles profiles = profileRepository.findByUserId(userId)
                 .orElseThrow(() -> new FailException(
                         ExceptionDefinition.USER_NOT_FOUND.getMessage(),
                         ExceptionDefinition.USER_NOT_FOUND.getErrorCode())
                 );
-
-        // get englishScore
-        Integer englishScore;
-        Optional<English> english = englishService.getEnglish(profiles.getId());
-        if (english.isPresent()) {
-            englishScore = english.get().getLevel();
-        } else englishScore = null;
 
         log.warn("pass english check");
         // get locations and division
@@ -179,7 +170,7 @@ public class ProfileServiceImpl implements ProfileService {
         List<CertificationDto> certifications = getCertificates(profiles.getId());
 
         return ProfileMapper.toProfileDtoResponse(
-                profiles,locations,listCapabilities,positions, englishScore,workExperiences,certifications,division
+                profiles,locations,listCapabilities,positions ,workExperiences,certifications,division
         );
     }
 
@@ -245,7 +236,7 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public List<ProjectCollaboratorDto> getProjectCollaborator(Integer projectId) {
         List<ProjectCollaboratorDto> result = new ArrayList<>();
-        List<ProjectUserStatusDto> psuList = projectFeignClientServiceImpl.getProjectMembers(projectId);
+        List<ProjectUserStatusDTO> psuList = serviceUtil.getProjectMembers(projectId);
         psuList.forEach(psu -> {
             ProjectCollaboratorDto pc = new ProjectCollaboratorDto();
             pc.setUserId(psu.getUserId());
@@ -275,10 +266,10 @@ public class ProfileServiceImpl implements ProfileService {
     public List<PositionUserDetailDto> getPositionUsersDetail(Integer projectId, Integer positionId, InterestingStatus status) {
         List<PositionUserDetailDto> positionUserDetailDtoLst = new ArrayList<>();
         List<Integer> userIds = null;
-        List<Integer> personaCapabilitiesId = projectFeignClientServiceImpl.getProjectPersonaCapabilities(projectId, positionId);
+        List<Integer> personaCapabilitiesId = projectPersonasService.getCapabilitiesId(projectId, positionId);
         Map<Integer, Capabilities> mapCapabilities = capabilitiesRepository.findAllById(personaCapabilitiesId).stream().collect(Collectors.toMap(Capabilities::getId, Function.identity()));
         if (status != null) {
-            userIds = projectFeignClientServiceImpl.getUsersInterestStatus(projectId, status);
+            userIds = projectUserStatusService.getUsersByInterestStatus(projectId, status);
         }
         List<ProjectMatching> projectMatchings = projectMatchingRepository.findAllByProjectIdAndPositionId(projectId, positionId);
         if (CollectionUtils.isNotEmpty(userIds)) {
@@ -331,29 +322,5 @@ public class ProfileServiceImpl implements ProfileService {
             });
         }
         return capabilityLevelDtoList;
-    }
-
-    @Override
-    public Optional<List<ProfileResponseDto>> getAll() {
-        try {
-            List<Profiles> all = profileRepository.findAll();
-
-            List<ProfileResponseDto> profileDTOs = new ArrayList<>();
-            all.forEach(profile -> {
-                try {
-                    authFeignClient.isExitPOId(profile.getUserId());
-                } catch (Exception e) {
-                    ProfileResponseDto profileElement = getProfileByUserId(profile.getUserId());
-                    profileDTOs.add(profileElement);
-                }
-            });
-
-            return Optional.of(profileDTOs);
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            log.error("while getAllProfiles");
-
-            return Optional.empty();
-        }
     }
 }

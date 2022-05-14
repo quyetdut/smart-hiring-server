@@ -1,6 +1,6 @@
-package com.smartdev.iresource.personal.common.response;
+package com.example.smarthiring.common.response;
 
-import com.smartdev.iresource.personal.common.enums.IResponseResult;
+import com.example.smarthiring.enums.IResponseResult;
 
 import java.util.HashMap;
 import java.util.Map;

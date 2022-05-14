@@ -1,4 +1,4 @@
-package com.smartdev.iresource.authentication.exception;
+package com.example.smarthiring.exception;
 
 public class MicroserviceException extends RuntimeException{
     private Integer DevCode;

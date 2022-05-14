@@ -1,12 +1,12 @@
-package com.example.smarthiring.services.implement;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.personal.common.enums.ExceptionDefinition;
-import com.smartdev.iresource.personal.dto.AwardDto;
-import com.smartdev.iresource.personal.entity.Awards;
-import com.smartdev.iresource.personal.exceptions.FailException;
-import com.smartdev.iresource.personal.exceptions.NotFoundException;
-import com.smartdev.iresource.personal.repository.AwardRepository;
-import com.smartdev.iresource.personal.services.AwardService;
+import com.example.smarthiring.dto.AwardDto;
+import com.example.smarthiring.entity.Awards;
+import com.example.smarthiring.enums.ExceptionDefinition;
+import com.example.smarthiring.exception.FailException;
+import com.example.smarthiring.exception.NotFoundException;
+import com.example.smarthiring.repository.AwardRepository;
+import com.example.smarthiring.service.AwardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,7 +47,7 @@ public class AwardServiceImp  implements AwardService {
             List<Awards> awards = awardRepository.findAll();
             return awards;
         }catch (Exception e){
-            throw new NotFoundException(ExceptionDefinition.AWARD_NOT_FOUND.getMessage(), ExceptionDefinition.AWARD_NOT_FOUND.getErrorCode());
+            throw new NotFoundException(ExceptionDefinition.AWARD_NOT_FOUND.getMessage(), ExceptionDefinition.CAPABILITY_NOT_FOUND.getErrorCode());
         }
     }
 
@@ -57,7 +57,7 @@ public class AwardServiceImp  implements AwardService {
             awardRepository.deleteAwardsById(id);
             return true;
         }catch (Exception e){
-            throw new NotFoundException(ExceptionDefinition.DELETE_AWARD_FAIL.getMessage(), ExceptionDefinition.DELETE_AWARD_FAIL.getErrorCode());
+            throw new NotFoundException(ExceptionDefinition.DELETE_AWARD_FAIL.getMessage(), ExceptionDefinition.CAPABILITY_NOT_FOUND.getErrorCode());
         }
 
     }

@@ -1,4 +1,4 @@
-package com.smartdev.iresource.authentication.config;
+package com.example.smarthiring.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

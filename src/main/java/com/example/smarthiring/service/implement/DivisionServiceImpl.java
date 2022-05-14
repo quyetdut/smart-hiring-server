@@ -1,8 +1,8 @@
-package com.example.smarthiring.services.implement;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.personal.entity.Division;
-import com.smartdev.iresource.personal.repository.DivisionRepository;
-import com.smartdev.iresource.personal.services.DivisionService;
+import com.example.smarthiring.entity.Division;
+import com.example.smarthiring.repository.DivisionRepository;
+import com.example.smarthiring.service.DivisionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

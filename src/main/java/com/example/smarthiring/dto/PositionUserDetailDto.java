@@ -1,4 +1,4 @@
-package com.smartdev.iresource.personal.dto;
+package com.example.smarthiring.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

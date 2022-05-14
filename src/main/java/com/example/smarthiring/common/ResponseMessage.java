@@ -1,4 +1,4 @@
-package com.smartdev.iresource.project.common;
+package com.example.smarthiring.common;
 
 public interface ResponseMessage {
 

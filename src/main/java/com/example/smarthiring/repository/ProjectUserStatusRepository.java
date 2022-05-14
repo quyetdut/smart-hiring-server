@@ -1,8 +1,8 @@
-package com.smartdev.iresource.project.repository;
+package com.example.smarthiring.repository;
 
-import com.smartdev.iresource.project.common.enums.CollaborateStatus;
-import com.smartdev.iresource.project.common.enums.InterestingStatus;
-import com.smartdev.iresource.project.entity.ProjectUserStatus;
+import com.example.smarthiring.entity.ProjectUserStatus;
+import com.example.smarthiring.enums.CollaborateStatus;
+import com.example.smarthiring.enums.InterestingStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

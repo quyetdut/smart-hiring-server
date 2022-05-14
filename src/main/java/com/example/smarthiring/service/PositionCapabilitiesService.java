@@ -1,6 +1,7 @@
-package com.example.smarthiring.services;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.personal.dto.CapabilityRequestDto;
+
+import com.example.smarthiring.dto.CapabilityRequestDto;
 
 public interface PositionCapabilitiesService {
     boolean createPositionCapabilities(CapabilityRequestDto capabilityRequestDto);

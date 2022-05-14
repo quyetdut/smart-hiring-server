@@ -1,6 +1,6 @@
-package com.smartdev.iresource.personal.dto;
+package com.example.smarthiring.dto;
 
-import com.smartdev.iresource.personal.entity.Position;
+import com.example.smarthiring.entity.Position;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

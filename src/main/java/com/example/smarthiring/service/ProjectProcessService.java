@@ -1,9 +1,8 @@
-package com.smartdev.iresource.project.service;
-
-import com.smartdev.iresource.project.entity.Process;
+package com.example.smarthiring.service;
 
 import java.util.List;
 import java.util.Set;
+import com.example.smarthiring.entity.Process;
 
 public interface ProjectProcessService {
     Set<Process> getProcessByProjectId(Integer ProjectId);

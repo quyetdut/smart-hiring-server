@@ -1,11 +1,9 @@
-package com.smartdev.iresource.project.dto;
+package com.example.smarthiring.dto;
 
+import com.example.smarthiring.common.ProjectStatus;
+import com.example.smarthiring.entity.*;
+import com.example.smarthiring.entity.Process;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.smartdev.iresource.project.common.ProjectStatus;
-import com.smartdev.iresource.project.entity.Document;
-import com.smartdev.iresource.project.entity.Process;
-import com.smartdev.iresource.project.entity.ProjectMember;
-import com.smartdev.iresource.project.entity.Tool;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

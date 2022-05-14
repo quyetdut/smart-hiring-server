@@ -1,18 +1,14 @@
-package com.smartdev.iresource.project.dto;
+package com.example.smarthiring.dto;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-import com.smartdev.iresource.project.common.ProjectStatus;
+
+import com.example.smarthiring.common.ProjectStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.core.io.Resource;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.io.File;
 
 @Data
 @AllArgsConstructor

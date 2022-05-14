@@ -1,8 +1,8 @@
 package com.example.smarthiring.controller;
 
-import com.smartdev.iresource.personal.common.enums.ResponseResult;
-import com.smartdev.iresource.personal.common.response.ResponseHandler;
-import com.smartdev.iresource.personal.services.DivisionService;
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.service.DivisionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

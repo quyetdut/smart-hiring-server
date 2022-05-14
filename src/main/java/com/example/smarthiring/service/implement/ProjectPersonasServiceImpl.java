@@ -1,23 +1,19 @@
-package com.example.smarthiring.service.impl;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.project.common.ResponseMessage;
-import com.smartdev.iresource.project.common.vo.Capabilities;
-import com.smartdev.iresource.project.common.vo.Position;
-import com.smartdev.iresource.project.converter.PersonasTechnicalConvertor;
-import com.smartdev.iresource.project.converter.ProjectPersonasConverter;
-import com.smartdev.iresource.project.dto.PersonasTechnicalDTO;
-import com.smartdev.iresource.project.dto.ProjectPersonasDTO;
-import com.smartdev.iresource.project.entity.PersonasTechnical;
-import com.smartdev.iresource.project.entity.ProjectPersonas;
-import com.smartdev.iresource.project.exception.NotFoundException;
-import com.smartdev.iresource.project.exception.RequestFailedException;
-import com.smartdev.iresource.project.exception.SomethingWrongException;
-import com.smartdev.iresource.project.repository.PersonasTechnicalRepository;
-import com.smartdev.iresource.project.repository.ProjectPersonasRepository;
-import com.smartdev.iresource.project.repository.ProjectRepository;
-import com.smartdev.iresource.project.service.ProjectPersonasService;
-import com.smartdev.iresource.project.service.feignclient.service.AuthFeignClientService;
-import com.smartdev.iresource.project.service.feignclient.service.PersonaFeignClientService;
+import com.example.smarthiring.common.ResponseMessage;
+import com.example.smarthiring.converter.PersonasTechnicalConvertor;
+import com.example.smarthiring.converter.ProjectPersonasConverter;
+import com.example.smarthiring.dto.PersonasTechnicalDTO;
+import com.example.smarthiring.dto.ProjectPersonasDTO;
+import com.example.smarthiring.entity.Capabilities;
+import com.example.smarthiring.entity.PersonasTechnical;
+import com.example.smarthiring.entity.Position;
+import com.example.smarthiring.entity.ProjectPersonas;
+import com.example.smarthiring.exception.NotFoundException;
+import com.example.smarthiring.exception.RequestFailedException;
+import com.example.smarthiring.exception.SomethingWrongException;
+import com.example.smarthiring.repository.*;
+import com.example.smarthiring.service.ProjectPersonasService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -36,9 +32,10 @@ public class ProjectPersonasServiceImpl implements ProjectPersonasService, Respo
     private final ProjectPersonasRepository projectPersonasRepository;
     private final ProjectRepository projectRepository;
     private final PersonasTechnicalRepository personasTechnicalRepository;
+    private final PositionRepository positionRepository;
 
-    private final AuthFeignClientService authFeignClientService;
-    private final PersonaFeignClientService personaFeignClientService;
+    private final CapabilitiesRepository capabilitiesRepository;
+
 
     @Override
     public Boolean updateNumberCurrentProjectPersonas(ProjectPersonasDTO personasDTO) {
@@ -47,7 +44,7 @@ public class ProjectPersonasServiceImpl implements ProjectPersonasService, Respo
             ProjectPersonas projectPersonas;
 
             if (personasOptional.isEmpty()) {
-                throw new NotFoundException("");
+                throw new NotFoundException("i");
             }
 
             projectPersonas = personasOptional.get();
@@ -78,7 +75,7 @@ public class ProjectPersonasServiceImpl implements ProjectPersonasService, Respo
     public ProjectPersonasDTO updateProjectPersonasWithProjectId(ProjectPersonasDTO projectPersonasDTO, Integer projectId) {
         try {
             if (!projectRepository.existsById(projectId)
-                    || !personaFeignClientService.checkExistsPositionId(projectPersonasDTO.getPositionId())) {
+                    || !positionRepository.existsById(projectPersonasDTO.getPositionId())) {
                 throw new NotFoundException("");
             }
 
@@ -135,7 +132,7 @@ public class ProjectPersonasServiceImpl implements ProjectPersonasService, Respo
     )
     ProjectPersonasDTO saveProjectPersonas(ProjectPersonasDTO projectPersonasDTO) {
         //check exit projectPersonas
-        if (!personaFeignClientService.checkExistsPositionId(projectPersonasDTO.getPositionId())) {
+        if (!positionRepository.existsById(projectPersonasDTO.getPositionId())) {
             throw new NotFoundException(NOT_FOUND);
         }
 
@@ -144,8 +141,7 @@ public class ProjectPersonasServiceImpl implements ProjectPersonasService, Respo
         ProjectPersonas finalProjectPersonas = projectPersonasRepository.save(projectPersonas);
 
         Position position =
-                personaFeignClientService
-                        .getPosition(finalProjectPersonas.getPositionId());
+                positionRepository.getById(finalProjectPersonas.getPositionId());
 
         ProjectPersonasDTO projectPersonasResponse = null;
         List<PersonasTechnical> personasTechnicals = new ArrayList<>();
@@ -158,12 +154,7 @@ public class ProjectPersonasServiceImpl implements ProjectPersonasService, Respo
         technicalDTOS.forEach(technicalItem -> {
             PersonasTechnical technical = null;
 
-            if (
-                    personaFeignClientService
-                            .checkExistsTechnical(
-                                    technicalItem.getCapabilitiesId()
-                            )
-            ) {
+            if (capabilitiesRepository.existsById(technicalItem.getCapabilitiesId())) {
                 technical = PersonasTechnicalConvertor.toEntity(technicalItem);
                 technical.setProjectPersonasId(finalProjectPersonas.getId());
 
@@ -180,8 +171,7 @@ public class ProjectPersonasServiceImpl implements ProjectPersonasService, Respo
         personasTechnicals.forEach(personasTechnical -> {
             PersonasTechnicalDTO personasTechnicalDTO = new PersonasTechnicalDTO();
 
-            Capabilities capabilities =
-                    personaFeignClientService.getCapabilities(personasTechnical.getCapabilitiesId());
+            Capabilities capabilities = capabilitiesRepository.getById(personasTechnical.getCapabilitiesId());
 
             personasTechnicalDTO = PersonasTechnicalConvertor.toDTO(personasTechnical, capabilities);
 
@@ -222,12 +212,7 @@ public class ProjectPersonasServiceImpl implements ProjectPersonasService, Respo
 
             technicalDTOS.forEach(technicalItem -> {
                 PersonasTechnical technical = null;
-                if (
-                        personaFeignClientService
-                                .checkExistsTechnical(
-                                        technicalItem.getCapabilitiesId()
-                                )
-                ) {
+                if (capabilitiesRepository.existsById(technicalItem.getCapabilitiesId())) {
                     technical = PersonasTechnicalConvertor.toEntity(technicalItem);
                     technical.setProjectPersonasId(projectPersonas.getId());
                     technicalSet.add(technical);
@@ -237,8 +222,7 @@ public class ProjectPersonasServiceImpl implements ProjectPersonasService, Respo
             ProjectPersonas projectPersonasData = projectPersonasRepository.save(projectPersonas);
 
             Position position =
-                    personaFeignClientService
-                            .getPosition(projectPersonasData.getPositionId());
+                    positionRepository.getById(projectPersonasData.getPositionId());
 
             ProjectPersonasDTO projectPersonasResponse = null;
 
@@ -254,7 +238,7 @@ public class ProjectPersonasServiceImpl implements ProjectPersonasService, Respo
                 PersonasTechnicalDTO personasTechnicalDTO = new PersonasTechnicalDTO();
 
                 Capabilities capabilities =
-                        personaFeignClientService.getCapabilities(personasTechnical.getCapabilitiesId());
+                        capabilitiesRepository.getById(personasTechnical.getCapabilitiesId());
 
                 personasTechnicalDTO = PersonasTechnicalConvertor.toDTO(personasTechnical, capabilities);
 

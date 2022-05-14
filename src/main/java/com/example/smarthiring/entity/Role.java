@@ -1,6 +1,6 @@
-package com.smartdev.iresource.authentication.entity;
+package com.example.smarthiring.entity;
 
-import com.smartdev.iresource.authentication.enums.ERole;
+import com.example.smarthiring.enums.ERole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

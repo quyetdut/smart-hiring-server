@@ -1,18 +1,14 @@
-package com.smartdev.iresource.project.controller;
+package com.example.smarthiring.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.smartdev.iresource.project.common.enums.ResponseResult;
-import com.smartdev.iresource.project.common.response.ResponseHandler;
-import com.smartdev.iresource.project.dto.DocumentDeleteDto;
-import com.smartdev.iresource.project.dto.DocumentDto;
-import com.smartdev.iresource.project.dto.ProjectInfoDTO;
-import com.smartdev.iresource.project.exception.FileStorageException;
-import com.smartdev.iresource.project.service.DocumentService;
-import com.smartdev.iresource.project.service.ProjectService;
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.dto.DocumentDeleteDto;
+import com.example.smarthiring.dto.DocumentDto;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.exception.FileStorageException;
+import com.example.smarthiring.service.DocumentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

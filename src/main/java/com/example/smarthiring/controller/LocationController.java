@@ -1,10 +1,9 @@
-package com.example.smarthiring.controllers;
+package com.example.smarthiring.controller;
 
-
-import com.smartdev.iresource.personal.common.enums.ResponseResult;
-import com.smartdev.iresource.personal.common.response.ResponseHandler;
-import com.smartdev.iresource.personal.dto.LocationRequestDto;
-import com.smartdev.iresource.personal.services.LocationService;
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.dto.LocationRequestDto;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

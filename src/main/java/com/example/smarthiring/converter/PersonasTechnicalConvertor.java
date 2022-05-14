@@ -1,8 +1,8 @@
-package com.smartdev.iresource.project.converter;
+package com.example.smarthiring.converter;
 
-import com.smartdev.iresource.project.common.vo.Capabilities;
-import com.smartdev.iresource.project.dto.PersonasTechnicalDTO;
-import com.smartdev.iresource.project.entity.PersonasTechnical;
+import com.example.smarthiring.dto.PersonasTechnicalDTO;
+import com.example.smarthiring.entity.Capabilities;
+import com.example.smarthiring.entity.PersonasTechnical;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 

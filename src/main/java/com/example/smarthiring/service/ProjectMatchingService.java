@@ -1,8 +1,8 @@
-package com.example.smarthiring.services;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.personal.dto.PageProjectMatchingDto;
-import com.smartdev.iresource.personal.dto.ProjectMatchingDto;
-import com.smartdev.iresource.personal.dto.ProjectMatchingResponseDto;
+import com.example.smarthiring.dto.PageProjectMatchingDto;
+import com.example.smarthiring.dto.ProjectMatchingDto;
+import com.example.smarthiring.dto.ProjectMatchingResponseDto;
 
 public interface ProjectMatchingService {
     boolean saveMatchingScore(ProjectMatchingDto projectMatchingDto);

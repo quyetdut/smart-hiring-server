@@ -1,6 +1,7 @@
-package com.smartdev.iresource.project.service;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.project.entity.Tool;
+
+import com.example.smarthiring.entity.Tool;
 
 import java.util.Set;
 

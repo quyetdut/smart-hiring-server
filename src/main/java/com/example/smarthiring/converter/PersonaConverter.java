@@ -1,10 +1,10 @@
-package com.smartdev.iresource.project.converter;
+package com.example.smarthiring.converter;
 
-import com.smartdev.iresource.project.common.vo.Position;
-import com.smartdev.iresource.project.dto.PersonasTechnicalDTO;
-import com.smartdev.iresource.project.dto.ProjectPersonasDTO;
-import com.smartdev.iresource.project.entity.PersonasTechnical;
-import com.smartdev.iresource.project.entity.ProjectPersonas;
+import com.example.smarthiring.dto.PersonasTechnicalDTO;
+import com.example.smarthiring.dto.ProjectPersonasDTO;
+import com.example.smarthiring.entity.PersonasTechnical;
+import com.example.smarthiring.entity.Position;
+import com.example.smarthiring.entity.ProjectPersonas;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.smartdev.iresource.authentication.email;
+package com.example.smarthiring.email;
 
 import javax.mail.MessagingException;
 

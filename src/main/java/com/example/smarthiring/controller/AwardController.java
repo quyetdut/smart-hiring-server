@@ -1,10 +1,10 @@
 package com.example.smarthiring.controller;
 
-import com.smartdev.iresource.personal.common.enums.ResponseResult;
-import com.smartdev.iresource.personal.common.response.ResponseHandler;
-import com.smartdev.iresource.personal.dto.AwardDto;
-import com.smartdev.iresource.personal.entity.Awards;
-import com.smartdev.iresource.personal.services.AwardService;
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.dto.AwardDto;
+import com.example.smarthiring.entity.Awards;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.service.AwardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

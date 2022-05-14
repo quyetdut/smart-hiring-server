@@ -1,16 +1,16 @@
-package com.example.smarthiring.services.implement;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.personal.common.enums.ExceptionDefinition;
-import com.smartdev.iresource.personal.dto.PositionRequestDto;
-import com.smartdev.iresource.personal.entity.Position;
-import com.smartdev.iresource.personal.entity.ProfilePosition;
-import com.smartdev.iresource.personal.entity.Profiles;
-import com.smartdev.iresource.personal.exceptions.FailException;
-import com.smartdev.iresource.personal.exceptions.NotFoundException;
-import com.smartdev.iresource.personal.repository.PositionRepository;
-import com.smartdev.iresource.personal.repository.ProfilePositionRepository;
-import com.smartdev.iresource.personal.repository.ProfileRepository;
-import com.smartdev.iresource.personal.services.PositionService;
+import com.example.smarthiring.dto.PositionRequestDto;
+import com.example.smarthiring.entity.Position;
+import com.example.smarthiring.entity.ProfilePosition;
+import com.example.smarthiring.entity.Profiles;
+import com.example.smarthiring.enums.ExceptionDefinition;
+import com.example.smarthiring.exception.FailException;
+import com.example.smarthiring.exception.NotFoundException;
+import com.example.smarthiring.repository.PositionRepository;
+import com.example.smarthiring.repository.ProfilePositionRepository;
+import com.example.smarthiring.repository.ProfileRepository;
+import com.example.smarthiring.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

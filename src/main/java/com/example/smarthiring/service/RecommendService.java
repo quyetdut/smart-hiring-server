@@ -1,6 +1,6 @@
-package com.smartdev.common.service;
+package com.example.smarthiring.service;
 
-import com.smartdev.common.dto.CapabilityLevelDto;
+import com.example.smarthiring.dto.CapabilityLevelDto;
 
 import java.util.HashMap;
 import java.util.List;

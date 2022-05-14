@@ -1,4 +1,4 @@
-package com.smartdev.iresource.personal.common.vo;
+package com.example.smarthiring.common.vo;
 
 public enum CollaborateStatus {
     INTERESTED,

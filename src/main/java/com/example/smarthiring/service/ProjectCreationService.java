@@ -1,6 +1,6 @@
-package com.smartdev.iresource.project.service;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.project.dto.ProjectCreationDTO;
+import com.example.smarthiring.dto.ProjectCreationDTO;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface ProjectCreationService {

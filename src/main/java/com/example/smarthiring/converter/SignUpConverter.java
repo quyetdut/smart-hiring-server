@@ -1,7 +1,7 @@
-package com.smartdev.iresource.authentication.converter;
+package com.example.smarthiring.converter;
 
-import com.smartdev.iresource.authentication.dto.SignUpDTO;
-import com.smartdev.iresource.authentication.entity.User;
+import com.example.smarthiring.dto.SignUpDTO;
+import com.example.smarthiring.entity.User;
 
 public class SignUpConverter {
     public static User convertModelSignupToUser(SignUpDTO signUpDTO, User user) {

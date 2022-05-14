@@ -1,6 +1,6 @@
-package com.smartdev.iresource.authentication.repository;
+package com.example.smarthiring.repository;
 
-import com.smartdev.iresource.authentication.entity.User;
+import com.example.smarthiring.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

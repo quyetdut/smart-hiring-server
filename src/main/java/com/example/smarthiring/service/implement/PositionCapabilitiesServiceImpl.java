@@ -1,15 +1,15 @@
-package com.example.smarthiring.services.implement;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.personal.common.enums.ExceptionDefinition;
-import com.smartdev.iresource.personal.dto.CapabilityRequestDto;
-import com.smartdev.iresource.personal.entity.Capabilities;
-import com.smartdev.iresource.personal.entity.Position;
-import com.smartdev.iresource.personal.entity.PositionCapabilities;
-import com.smartdev.iresource.personal.exceptions.NotFoundException;
-import com.smartdev.iresource.personal.repository.CapabilitiesRepository;
-import com.smartdev.iresource.personal.repository.PositionCapabilitiesRepository;
-import com.smartdev.iresource.personal.repository.PositionRepository;
-import com.smartdev.iresource.personal.services.PositionCapabilitiesService;
+import com.example.smarthiring.dto.CapabilityRequestDto;
+import com.example.smarthiring.entity.Capabilities;
+import com.example.smarthiring.entity.Position;
+import com.example.smarthiring.entity.PositionCapabilities;
+import com.example.smarthiring.enums.ExceptionDefinition;
+import com.example.smarthiring.exception.NotFoundException;
+import com.example.smarthiring.repository.CapabilitiesRepository;
+import com.example.smarthiring.repository.PositionCapabilitiesRepository;
+import com.example.smarthiring.repository.PositionRepository;
+import com.example.smarthiring.service.PositionCapabilitiesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
-package com.smartdev.iresource.project.entity;
+package com.example.smarthiring.entity;
 
-import com.smartdev.iresource.project.common.enums.CollaborateStatus;
-import com.smartdev.iresource.project.common.enums.InterestingStatus;
+import com.example.smarthiring.enums.CollaborateStatus;
+import com.example.smarthiring.enums.InterestingStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

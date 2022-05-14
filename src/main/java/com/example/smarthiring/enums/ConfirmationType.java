@@ -1,4 +1,4 @@
-package com.smartdev.iresource.authentication.enums;
+package com.example.smarthiring.enums;
 
 import lombok.Getter;
 import lombok.Setter;

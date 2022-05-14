@@ -1,22 +1,19 @@
-package com.smartdev.iresource.authentication.security;
+package com.example.smarthiring.security;
 
+import com.example.smarthiring.dto.LoginRequestDTO;
+import com.example.smarthiring.dto.UserDTO;
+import com.example.smarthiring.entity.User;
+import com.example.smarthiring.exception.ResponseBodyException;
+import com.example.smarthiring.mapper.UserMapper;
+import com.example.smarthiring.service.ProfileService;
+import com.example.smarthiring.service.UserService;
+import com.example.smarthiring.utility.JwtUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.smartdev.iresource.authentication.common.feignclient.PersonalFeignClient;
-import com.smartdev.iresource.authentication.dto.LoginRequestDTO;
-import com.smartdev.iresource.authentication.dto.UserDTO;
-import com.smartdev.iresource.authentication.entity.User;
-import com.smartdev.iresource.authentication.service.UserService;
-import com.smartdev.iresource.authentication.service.impl.PersonaFeignClientService;
-import com.smartdev.iresource.authentication.utility.JwtUtils;
-import com.smartdev.iresource.authentication.exception.ResponseBodyException;
-import com.smartdev.iresource.authentication.mapper.UserMapper;
-
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.DisabledException;
@@ -41,9 +38,8 @@ public class AuthEmailAndPasswordFilter extends UsernamePasswordAuthenticationFi
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
     private final JwtUtils jwtUtils;
-    private final PersonalFeignClient personalFeignClient;
-    private final PersonaFeignClientService personaFeignClientService;
 
+    private final ProfileService profileService;
     private Logger logger = LoggerFactory.getLogger(AuthEmailAndPasswordFilter.class);
 
     @SneakyThrows
@@ -72,7 +68,7 @@ public class AuthEmailAndPasswordFilter extends UsernamePasswordAuthenticationFi
 
         UserDTO user = userMapper(userDetails.getEmail());
         user.setIsProfileCreated(isExistProfile(user.getId()));
-        user.setName(personaFeignClientService.getUsernameByUserId(user.getId()));
+        user.setName(profileService.getUsernameByUserId(user.getId()));
         String jwt = jwtUtils.generateJwtToken(authResult);
 
         Map<String, Object> responseBody = new LinkedHashMap<>();
@@ -117,7 +113,7 @@ public class AuthEmailAndPasswordFilter extends UsernamePasswordAuthenticationFi
 
     private Boolean isExistProfile(Integer id) {
         try {
-            Boolean isCreated = personalFeignClient.isExistProfile(id);
+            Boolean isCreated = profileService.isExistProfile(id);
             return isCreated;
         } catch (Exception e) {
             logger.warn(e.getMessage());

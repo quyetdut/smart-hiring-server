@@ -1,7 +1,7 @@
-package com.smartdev.iresource.authentication.repository;
+package com.example.smarthiring.repository;
 
-import com.smartdev.iresource.authentication.enums.ERole;
-import com.smartdev.iresource.authentication.entity.Role;
+import com.example.smarthiring.entity.Role;
+import com.example.smarthiring.enums.ERole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

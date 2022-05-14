@@ -1,4 +1,4 @@
-package com.smartdev.iresource.personal.common.vo.radarchart.object;
+package com.example.smarthiring.common.vo.radarchart.object;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

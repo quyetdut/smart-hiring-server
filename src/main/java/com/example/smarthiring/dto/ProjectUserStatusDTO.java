@@ -1,8 +1,8 @@
-package com.smartdev.iresource.project.dto;
+package com.example.smarthiring.dto;
 
+import com.example.smarthiring.enums.CollaborateStatus;
+import com.example.smarthiring.enums.InterestingStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.smartdev.iresource.project.common.enums.CollaborateStatus;
-import com.smartdev.iresource.project.common.enums.InterestingStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

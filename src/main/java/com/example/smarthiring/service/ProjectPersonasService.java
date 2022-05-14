@@ -1,6 +1,6 @@
-package com.smartdev.iresource.project.service;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.project.dto.ProjectPersonasDTO;
+import com.example.smarthiring.dto.ProjectPersonasDTO;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.smartdev.iresource.project.repository;
+package com.example.smarthiring.repository;
 
-import com.smartdev.iresource.project.entity.PersonasTechnical;
+import com.example.smarthiring.entity.PersonasTechnical;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +16,6 @@ public interface PersonasTechnicalRepository extends JpaRepository<PersonasTechn
     void deleteAllByProjectPersonasId(Integer projectPersonasId);
 
     List<PersonasTechnical> findAllByProjectPersonasIdIn(Collection<Integer> projectPersonasIds);
+
+    Boolean existsPersonasTechnicalByCapabilitiesId(Integer capabilityId);
 }

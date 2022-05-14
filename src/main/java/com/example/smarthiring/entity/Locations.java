@@ -1,4 +1,4 @@
-package com.smartdev.iresource.personal.entity;
+package com.example.smarthiring.entity;
 
 import lombok.*;
 

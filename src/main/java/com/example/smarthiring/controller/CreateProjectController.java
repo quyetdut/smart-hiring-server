@@ -1,22 +1,19 @@
-package com.smartdev.iresource.project.controller;
+package com.example.smarthiring.controller;
 
 
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.dto.ProjectCreationDTO;
+import com.example.smarthiring.dto.ProjectInfoDTO;
+import com.example.smarthiring.dto.ProjectPersonasDTO;
+import com.example.smarthiring.entity.*;
+import com.example.smarthiring.entity.Process;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.exception.FileStorageException;
+import com.example.smarthiring.service.ProjectCreationService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import com.smartdev.iresource.project.common.enums.ResponseResult;
-import com.smartdev.iresource.project.common.response.ResponseHandler;
-import com.smartdev.iresource.project.dto.ProjectCreationDTO;
-import com.smartdev.iresource.project.dto.ProjectInfoDTO;
-import com.smartdev.iresource.project.dto.ProjectPersonasDTO;
-import com.smartdev.iresource.project.entity.Process;
-import com.smartdev.iresource.project.entity.ProjectMember;
-import com.smartdev.iresource.project.entity.Tool;
-import com.smartdev.iresource.project.exception.FileStorageException;
-import com.smartdev.iresource.project.service.ProjectCreationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

@@ -1,9 +1,10 @@
-package com.smartdev.iresource.authentication.security;
+package com.example.smarthiring.security;
 
+import com.example.smarthiring.exception.ResponseBodyException;
+import com.example.smarthiring.service.UserService;
+import com.example.smarthiring.utility.JwtUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.smartdev.iresource.authentication.service.UserService;
-import com.smartdev.iresource.authentication.utility.JwtUtils;
-import com.smartdev.iresource.authentication.exception.ResponseBodyException;
+
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

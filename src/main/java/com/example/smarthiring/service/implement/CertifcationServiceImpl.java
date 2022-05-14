@@ -1,9 +1,9 @@
-package com.example.smarthiring.services.implement;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.personal.dto.CertificationDto;
-import com.smartdev.iresource.personal.entity.Certification;
-import com.smartdev.iresource.personal.repository.CertificationRepository;
-import com.smartdev.iresource.personal.services.CertifcationService;
+import com.example.smarthiring.dto.CertificationDto;
+import com.example.smarthiring.entity.Certification;
+import com.example.smarthiring.repository.CertificationRepository;
+import com.example.smarthiring.service.CertifcationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

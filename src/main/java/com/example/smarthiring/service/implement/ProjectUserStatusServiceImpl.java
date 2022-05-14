@@ -1,20 +1,20 @@
-package com.example.smarthiring.service.impl;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.project.common.enums.CollaborateStatus;
-import com.smartdev.iresource.project.common.enums.InterestingStatus;
-import com.smartdev.iresource.project.dto.ProjectUserStatusDTO;
-import com.smartdev.iresource.project.dto.UserPositionInteractReportDto;
-import com.smartdev.iresource.project.entity.ProjectMember;
-import com.smartdev.iresource.project.entity.ProjectUserStatus;
-import com.smartdev.iresource.project.exception.NotFoundException;
-import com.smartdev.iresource.project.exception.SomethingWrongException;
-import com.smartdev.iresource.project.repository.ProjectMemberRepository;
-import com.smartdev.iresource.project.repository.ProjectRepository;
-import com.smartdev.iresource.project.repository.ProjectUserStatusRepository;
-import com.smartdev.iresource.project.service.ProjectMemberService;
-import com.smartdev.iresource.project.service.ProjectUserStatusService;
-import com.smartdev.iresource.project.service.feignclient.service.AuthFeignClientService;
-import com.smartdev.iresource.project.service.feignclient.service.PersonaFeignClientService;
+import com.example.smarthiring.dto.ProjectUserStatusDTO;
+import com.example.smarthiring.dto.UserPositionInteractReportDto;
+import com.example.smarthiring.entity.ProjectMember;
+import com.example.smarthiring.entity.ProjectUserStatus;
+import com.example.smarthiring.enums.CollaborateStatus;
+import com.example.smarthiring.enums.InterestingStatus;
+import com.example.smarthiring.exception.NotFoundException;
+import com.example.smarthiring.exception.SomethingWrongException;
+import com.example.smarthiring.repository.ProjectMemberRepository;
+import com.example.smarthiring.repository.ProjectRepository;
+import com.example.smarthiring.repository.ProjectUserStatusRepository;
+import com.example.smarthiring.repository.UserRepository;
+import com.example.smarthiring.service.ProjectMatchingService;
+import com.example.smarthiring.service.ProjectMemberService;
+import com.example.smarthiring.service.ProjectUserStatusService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,9 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import static com.smartdev.iresource.project.common.ResponseMessage.INTERNAL_SERVER_ERROR;
-import static com.smartdev.iresource.project.common.ResponseMessage.NOT_FOUND;
+;import static com.example.smarthiring.common.ResponseMessage.INTERNAL_SERVER_ERROR;
+import static com.example.smarthiring.common.ResponseMessage.NOT_FOUND;
 
 @Service
 @RequiredArgsConstructor
@@ -35,17 +34,19 @@ public class ProjectUserStatusServiceImpl implements ProjectUserStatusService {
 
     private final ProjectUserStatusRepository projectUserStatusRepository;
     private final ProjectRepository projectRepository;
-    private final AuthFeignClientService authFeignClientService;
     private final ProjectMemberRepository projectMemberRepository;
     private final ProjectMemberService projectMemberService;
-    private final PersonaFeignClientService personaFeignClientService;
+
+    private final UserRepository userRepository;
+
+    private final ProjectMatchingService projectMatchingService;
 
     @Override
     @Transactional
     public Boolean updateProjectUserStatus(ProjectUserStatusDTO projectUserStatusDTO) {
         try {
             if (
-                    !authFeignClientService.isExistUserId(projectUserStatusDTO.getUserId())
+                    !userRepository.existsById(projectUserStatusDTO.getUserId())
                             || !projectRepository.existsById(projectUserStatusDTO.getProjectId())
             ) {
                 throw new NotFoundException("projectId or userId is not exist");
@@ -116,7 +117,7 @@ public class ProjectUserStatusServiceImpl implements ProjectUserStatusService {
     @Override
     public ProjectUserStatusDTO getCollaborateStatus(Integer projectId, Integer userId) {
         if (
-                !authFeignClientService.isExistUserId(userId)
+                !userRepository.existsById(userId)
                         || !projectRepository.existsById(projectId)
         ) {
             throw new NotFoundException("projectId or userId is not exist");
@@ -140,10 +141,7 @@ public class ProjectUserStatusServiceImpl implements ProjectUserStatusService {
 
     @Override
     public ProjectUserStatusDTO getInterestingStatus(Integer projectId, Integer userId) {
-        if (
-                !authFeignClientService.isExistUserId(userId)
-                        || !projectRepository.existsById(projectId)
-        ) {
+        if (!userRepository.existsById(userId) || !projectRepository.existsById(projectId)) {
             throw new NotFoundException("projectId or userId is not exist");
         }
         ProjectUserStatusDTO projectUserStatusDTO = new ProjectUserStatusDTO();
@@ -174,7 +172,7 @@ public class ProjectUserStatusServiceImpl implements ProjectUserStatusService {
 
     @Override
     public UserPositionInteractReportDto getUserPositionInteractReport(Integer projectId, Integer positionId) {
-        Integer matchingCount = personaFeignClientService.getCountMatching(projectId, positionId);
+        Integer matchingCount = projectMatchingService.getCountMatching(projectId, positionId);
         List<ProjectUserStatus> projectUserStatuses = projectUserStatusRepository.findAllByProjectIdAndPositionId(projectId, positionId);
         UserPositionInteractReportDto userPositionInteractReportDto = new UserPositionInteractReportDto();
         userPositionInteractReportDto.setMatching(matchingCount);

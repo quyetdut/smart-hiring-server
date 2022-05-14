@@ -1,4 +1,4 @@
-package com.smartdev.iresource.project.dto;
+package com.example.smarthiring.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;

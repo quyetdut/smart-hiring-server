@@ -1,11 +1,11 @@
-package com.example.smarthiring.service.impl;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.project.dto.DocumentDeleteDto;
-import com.smartdev.iresource.project.dto.DocumentDto;
-import com.smartdev.iresource.project.entity.Document;
-import com.smartdev.iresource.project.exception.SomethingWrongException;
-import com.smartdev.iresource.project.repository.DocumentRepository;
-import com.smartdev.iresource.project.service.DocumentService;
+import com.example.smarthiring.dto.DocumentDeleteDto;
+import com.example.smarthiring.dto.DocumentDto;
+import com.example.smarthiring.entity.Document;
+import com.example.smarthiring.exception.SomethingWrongException;
+import com.example.smarthiring.repository.DocumentRepository;
+import com.example.smarthiring.service.DocumentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static com.smartdev.iresource.project.common.ErrorLog.SAVE_DOCUMENT_FAILED;
+import static com.example.smarthiring.common.ErrorLog.SAVE_DOCUMENT_FAILED;
+
 
 @Service
 @Slf4j

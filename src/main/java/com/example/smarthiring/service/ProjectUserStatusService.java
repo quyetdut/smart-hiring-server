@@ -1,8 +1,9 @@
-package com.smartdev.iresource.project.service;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.project.common.enums.InterestingStatus;
-import com.smartdev.iresource.project.dto.UserPositionInteractReportDto;
-import com.smartdev.iresource.project.dto.ProjectUserStatusDTO;
+
+import com.example.smarthiring.dto.ProjectUserStatusDTO;
+import com.example.smarthiring.dto.UserPositionInteractReportDto;
+import com.example.smarthiring.enums.InterestingStatus;
 
 import java.util.List;
 

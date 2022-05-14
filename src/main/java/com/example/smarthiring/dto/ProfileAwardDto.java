@@ -1,6 +1,6 @@
-package com.smartdev.iresource.personal.dto;
+package com.example.smarthiring.dto;
 
-import com.smartdev.iresource.personal.entity.Awards;
+import com.example.smarthiring.entity.Awards;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

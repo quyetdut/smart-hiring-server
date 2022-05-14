@@ -1,12 +1,12 @@
-package com.example.smarthiring.exceptions;
+package com.example.smarthiring.exception;
 
 import lombok.Getter;
 
 @Getter
-public class NotFoundException extends RuntimeException {
+public class NotFoundExceptionDev extends RuntimeException {
     private Integer DevCode;
 
-    public NotFoundException(String message, Integer devCode) {
+    public NotFoundExceptionDev(String message, Integer devCode) {
         super(message);
         this.DevCode = devCode;
     }

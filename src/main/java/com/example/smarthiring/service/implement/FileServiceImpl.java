@@ -1,7 +1,7 @@
-package com.example.smarthiring.service.impl;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.project.exception.FileStorageException;
-import com.smartdev.iresource.project.service.FileService;
+import com.example.smarthiring.exception.FileStorageException;
+import com.example.smarthiring.service.FileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;

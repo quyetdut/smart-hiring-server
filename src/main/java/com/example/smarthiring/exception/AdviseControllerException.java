@@ -1,4 +1,4 @@
-package com.smartdev.iresource.authentication.exception;
+package com.example.smarthiring.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

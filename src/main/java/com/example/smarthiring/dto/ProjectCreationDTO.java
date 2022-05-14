@@ -1,12 +1,12 @@
-package com.smartdev.iresource.project.dto;
+package com.example.smarthiring.dto;
 
+import com.example.smarthiring.entity.ProjectMember;
+import com.example.smarthiring.entity.Tool;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.smartdev.iresource.project.entity.Process;
-import com.smartdev.iresource.project.entity.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
+import com.example.smarthiring.entity.Process;
 
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;

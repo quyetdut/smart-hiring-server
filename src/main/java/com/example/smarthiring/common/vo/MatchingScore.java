@@ -1,4 +1,4 @@
-package com.smartdev.iresource.project.common.vo;
+package com.example.smarthiring.common.vo;
 
 import lombok.Data;
 

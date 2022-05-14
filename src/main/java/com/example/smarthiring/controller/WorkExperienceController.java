@@ -1,9 +1,9 @@
-package com.example.smarthiring.controllers;
+package com.example.smarthiring.controller;
 
-import com.smartdev.iresource.personal.common.enums.ResponseResult;
-import com.smartdev.iresource.personal.common.response.ResponseHandler;
-import com.smartdev.iresource.personal.dto.WorkExperienceDto;
-import com.smartdev.iresource.personal.services.WorkExperienceService;
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.dto.WorkExperienceDto;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.service.WorkExperienceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

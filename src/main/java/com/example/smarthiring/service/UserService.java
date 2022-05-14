@@ -1,10 +1,9 @@
-package com.smartdev.iresource.authentication.service;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.authentication.dto.ChangePasswordDTO;
-import com.smartdev.iresource.authentication.dto.SignUpDTO;
-import com.smartdev.iresource.authentication.entity.User;
-import com.smartdev.iresource.authentication.exception.RegistrationFailedException;
-import org.springframework.http.ResponseEntity;
+import com.example.smarthiring.dto.ChangePasswordDTO;
+import com.example.smarthiring.dto.SignUpDTO;
+import com.example.smarthiring.entity.User;
+import com.example.smarthiring.exception.RegistrationFailedException;
 
 import java.util.List;
 import java.util.Map;

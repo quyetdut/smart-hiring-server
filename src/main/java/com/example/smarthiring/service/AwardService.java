@@ -1,7 +1,7 @@
-package com.example.smarthiring.services;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.personal.dto.AwardDto;
-import com.smartdev.iresource.personal.entity.Awards;
+import com.example.smarthiring.dto.AwardDto;
+import com.example.smarthiring.entity.Awards;
 
 import java.util.List;
 

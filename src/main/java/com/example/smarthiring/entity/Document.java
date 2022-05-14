@@ -1,4 +1,4 @@
-package com.smartdev.iresource.project.entity;
+package com.example.smarthiring.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,6 @@
-package com.smartdev.iresource.personal.dto;
+package com.example.smarthiring.dto;
 
-import com.smartdev.iresource.personal.common.vo.ChartSkill;
+import com.example.smarthiring.common.vo.ChartSkill;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

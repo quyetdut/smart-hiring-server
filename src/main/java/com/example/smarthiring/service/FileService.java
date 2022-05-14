@@ -1,4 +1,4 @@
-package com.smartdev.iresource.project.service;
+package com.example.smarthiring.service;
 
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;

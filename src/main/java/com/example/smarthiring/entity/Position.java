@@ -1,4 +1,4 @@
-package com.smartdev.iresource.personal.entity;
+package com.example.smarthiring.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,4 +28,6 @@ public class Position {
 
     @NotNull(message = "not null")
     private String roleName;
+
+    private String imgPath;
 }

@@ -1,10 +1,10 @@
-package com.example.smarthiring.services.implement;
+package com.example.smarthiring.service.implement;
 
-import com.smartdev.iresource.personal.dto.WorkExperienceDto;
-import com.smartdev.iresource.personal.entity.WorkExperiences;
-import com.smartdev.iresource.personal.exceptions.FailException;
-import com.smartdev.iresource.personal.repository.WorkExperienceRepository;
-import com.smartdev.iresource.personal.services.WorkExperienceService;
+import com.example.smarthiring.dto.WorkExperienceDto;
+import com.example.smarthiring.entity.WorkExperiences;
+import com.example.smarthiring.exception.FailException;
+import com.example.smarthiring.repository.WorkExperienceRepository;
+import com.example.smarthiring.service.WorkExperienceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

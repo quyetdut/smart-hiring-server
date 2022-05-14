@@ -1,4 +1,4 @@
-package com.smartdev.iresource.project.exception;
+package com.example.smarthiring.exception;
 
 public class FileStorageException extends RuntimeException {
     public FileStorageException(String message) {

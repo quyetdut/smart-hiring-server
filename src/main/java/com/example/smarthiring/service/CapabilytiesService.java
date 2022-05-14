@@ -1,7 +1,8 @@
-package com.example.smarthiring.services;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.personal.dto.CapabilityDto;
-import com.smartdev.iresource.personal.entity.Capabilities;
+
+import com.example.smarthiring.dto.CapabilityDto;
+import com.example.smarthiring.entity.Capabilities;
 
 import java.util.Collection;
 import java.util.List;

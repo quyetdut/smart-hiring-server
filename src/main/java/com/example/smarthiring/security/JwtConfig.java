@@ -1,4 +1,4 @@
-package com.smartdev.iresource.authentication.security;
+package com.example.smarthiring.security;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.smartdev.iresource.authentication.exception;
+package com.example.smarthiring.exception;
 
 import lombok.Getter;
 

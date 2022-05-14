@@ -1,7 +1,7 @@
-package com.example.smarthiring.services;
+package com.example.smarthiring.service;
 
-import com.smartdev.iresource.personal.common.enums.InterestingStatus;
-import com.smartdev.iresource.personal.dto.*;
+import com.example.smarthiring.dto.*;
+import com.example.smarthiring.enums.InterestingStatus;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,5 +24,4 @@ public interface ProfileService {
 
     List<PositionUserDetailDto> getPositionUsersDetail(Integer projectId, Integer positionId, InterestingStatus status);
 
-    Optional<List<ProfileResponseDto>> getAll();
 }

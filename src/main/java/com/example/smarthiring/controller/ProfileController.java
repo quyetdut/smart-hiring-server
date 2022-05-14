@@ -1,12 +1,12 @@
-package com.example.smarthiring.controllers;
+package com.example.smarthiring.controller;
 
-import com.smartdev.iresource.personal.common.enums.InterestingStatus;
-import com.smartdev.iresource.personal.common.enums.ResponseResult;
-import com.smartdev.iresource.personal.common.response.ResponseHandler;
-import com.smartdev.iresource.personal.dto.PositionUserDetailDto;
-import com.smartdev.iresource.personal.dto.ProfileDto;
-import com.smartdev.iresource.personal.dto.ProfileResponseDto;
-import com.smartdev.iresource.personal.services.ProfileService;
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.dto.PositionUserDetailDto;
+import com.example.smarthiring.dto.ProfileDto;
+import com.example.smarthiring.dto.ProfileResponseDto;
+import com.example.smarthiring.enums.InterestingStatus;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -67,11 +67,5 @@ public class ProfileController {
         Map<String, List<PositionUserDetailDto>> result = new HashMap<>();
         result.put("member", profileService.getPositionUsersDetail(projectId, positionId, interestingStatus));
         return ResponseEntity.ok(ResponseHandler.getInstance().response(result, ResponseResult.SUCCESS));
-    }
-    @GetMapping("/get-all-employees")
-    public ResponseEntity<Object> getAll() {
-        Optional<List<ProfileResponseDto>> responseDTOs = profileService.getAll();
-        if (responseDTOs.isPresent()) return ResponseEntity.ok(ResponseHandler.getInstance().response(responseDTOs.get(), ResponseResult.SUCCESS));
-        return ResponseEntity.internalServerError().build();
     }
 }

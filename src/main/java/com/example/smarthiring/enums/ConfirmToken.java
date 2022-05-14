@@ -1,6 +1,5 @@
-package com.smartdev.iresource.authentication.enums;
+package com.example.smarthiring.enums;
 
-import com.smartdev.iresource.authentication.common.enums.IResponseResult;
 import lombok.Getter;
 
 @Getter

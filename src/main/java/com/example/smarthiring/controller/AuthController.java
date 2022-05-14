@@ -1,15 +1,15 @@
-package com.smartdev.iresource.authentication.controller;
+package com.example.smarthiring.controller;
 
-import com.smartdev.iresource.authentication.common.enums.ResponseResult;
-import com.smartdev.iresource.authentication.common.response.ResponseHandler;
-import com.smartdev.iresource.authentication.dto.ChangePasswordDTO;
-import com.smartdev.iresource.authentication.dto.SignUpDTO;
-import com.smartdev.iresource.authentication.entity.User;
-import com.smartdev.iresource.authentication.enums.ConfirmToken;
-import com.smartdev.iresource.authentication.enums.ConfirmationType;
-import com.smartdev.iresource.authentication.exception.ResponseBodyException;
-import com.smartdev.iresource.authentication.service.ConfirmationTokenService;
-import com.smartdev.iresource.authentication.service.UserService;
+import com.example.smarthiring.common.response.ResponseHandler;
+import com.example.smarthiring.dto.ChangePasswordDTO;
+import com.example.smarthiring.dto.SignUpDTO;
+import com.example.smarthiring.entity.User;
+import com.example.smarthiring.enums.ConfirmToken;
+import com.example.smarthiring.enums.ConfirmationType;
+import com.example.smarthiring.enums.ResponseResult;
+import com.example.smarthiring.exception.ResponseBodyException;
+import com.example.smarthiring.service.ConfirmationTokenService;
+import com.example.smarthiring.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
-package com.smartdev.iresource.authentication.entity;
+package com.example.smarthiring.entity;
 
-import com.smartdev.iresource.authentication.enums.ConfirmationType;
+import com.example.smarthiring.enums.ConfirmationType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
