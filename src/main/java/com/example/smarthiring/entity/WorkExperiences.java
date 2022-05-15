@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -21,10 +22,10 @@ public class WorkExperiences {
     private Integer id ;
 
     @NotNull(message = "startAt is required")
-    private LocalDate startAt;
+    private String startAt;
 
     @NotNull(message = "endAt is required")
-    private LocalDate endAt;
+    private String endAt;
 
     @NotNull(message = "description is required")
     @Column(length = 100000)

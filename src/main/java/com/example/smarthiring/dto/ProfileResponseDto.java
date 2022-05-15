@@ -21,7 +21,6 @@ public class ProfileResponseDto {
     private String division;
     private String location;
     private String position;
-    private Integer english;
     private List<CapabilityLevelDto> capabilities;
     private List<WorkExperienceDto> workExperiences;
     private List<CertificationDto> certifications;
