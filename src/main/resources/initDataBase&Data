@@ -355,12 +355,12 @@ INSERT INTO  `position_capabilities` VALUES
 (60, 12, 6);
 
 
-INSERT INTO division ( name ) VALUES ('SmartDev Russia');
-INSERT INTO division ( name ) VALUES ('SmartDev France');
-INSERT INTO division ( name ) VALUES ('SmartDev Switzerland');
-INSERT INTO division ( name ) VALUES ('SmartDev Germany');
-INSERT INTO division ( name ) VALUES ('SmartDev England');
-INSERT INTO division ( name ) VALUES ('SmartDev Vietnam');
+INSERT INTO division ( name ) VALUES ('Russia');
+INSERT INTO division ( name ) VALUES ('France');
+INSERT INTO division ( name ) VALUES ('Switzerland');
+INSERT INTO division ( name ) VALUES ('Germany');
+INSERT INTO division ( name ) VALUES ('England');
+INSERT INTO division ( name ) VALUES ('Vietnam');
 
 INSERT INTO awards( name ,img) VALUES ('Taca Iberica Rugby', 'https://i.pinimg.com/236x/8c/ae/34/8cae34a020ea258fce4907e9ba8d6c94.jpg');
 INSERT INTO awards( name ,img) VALUES ('OLC', 'https://olc-wordpress-assets.s3.amazonaws.com/uploads/2021/04/OLC-Awards-Thumbnail-1200x800.jpg');

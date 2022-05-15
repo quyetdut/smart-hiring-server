@@ -30,7 +30,7 @@ public class PersonaConverter {
         personasDTO.setId(projectPersonas.getId());
         personasDTO.setPositionId(projectPersonas.getPositionId());
         personasDTO.setPositionName(position.getName());
-        personasDTO.setPositionImg(position.getImgPath());
+//        personasDTO.setPositionImg(position.getImgPath());
         personasDTO.setNumberNeeded(projectPersonas.getNumberNeeded());
         personasDTO.setNumberCurrent(projectPersonas.getNumberCurrent());
         personasDTO.setMonthNeeded(projectPersonas.getMonthNeeded());

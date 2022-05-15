@@ -14,6 +14,7 @@ import java.util.List;
 @RequestMapping("/project/project-process")
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class ProjectProcessController {
     private final ProjectProcessService projectProcessService;
 

@@ -28,6 +28,4 @@ public class Position {
 
     @NotNull(message = "not null")
     private String roleName;
-
-    private String imgPath;
 }

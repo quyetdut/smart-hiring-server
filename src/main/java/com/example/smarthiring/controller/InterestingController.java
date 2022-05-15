@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/project/interesting")
 @AllArgsConstructor
 @Slf4j
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class InterestingController {
     private ProjectUserStatusService projectUserStatusService;
 

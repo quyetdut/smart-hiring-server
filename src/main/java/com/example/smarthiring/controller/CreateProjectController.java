@@ -24,6 +24,7 @@ import java.util.Set;
 @RequestMapping("/project/projects/creation/{poId}")
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class CreateProjectController {
 
     private final ProjectCreationService projectCreationService;

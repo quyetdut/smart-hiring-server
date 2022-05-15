@@ -5,6 +5,7 @@ import com.example.smarthiring.security.JwtConfig;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,7 @@ import java.util.Date;
 
 @Component
 @AllArgsConstructor
+@Slf4j
 public class JwtUtils {
 
     JwtConfig jwtConfig;
@@ -38,7 +40,8 @@ public class JwtUtils {
             Jwts.parser().setSigningKey(jwtConfig.getSecretKey()).parseClaimsJws(authToken);
             return true;
         } catch (Exception e) {
-            throw new RuntimeException("Token failed!");
+//            throw new RuntimeException("Token failed!");
+            return false;
         }
         /*catch (SignatureException e) {
 

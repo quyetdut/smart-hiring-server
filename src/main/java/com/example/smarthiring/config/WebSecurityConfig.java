@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 jwtUtils,
                 profileService
         );
-        authEmailAndPasswordFilter.setFilterProcessesUrl("/sign-in");
+        authEmailAndPasswordFilter.setFilterProcessesUrl("/auth/sign-in");
 
         http
                 .cors().and().csrf().disable()
@@ -69,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/**", "/feign-client/**").permitAll()
+                .antMatchers("/auth/**").permitAll()
                 .anyRequest().authenticated();
         http
                 .addFilter(authEmailAndPasswordFilter)

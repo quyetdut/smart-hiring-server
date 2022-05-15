@@ -5,6 +5,7 @@ import com.example.smarthiring.enums.ResponseResult;
 import com.example.smarthiring.service.DivisionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/persona/division")
 @RequiredArgsConstructor
-//@CrossOrigin(origins = "*",maxAge = 3600)
+@CrossOrigin(origins = "*",maxAge = 3600)
 public class DivisionController {
 
     private final DivisionService divisionService;

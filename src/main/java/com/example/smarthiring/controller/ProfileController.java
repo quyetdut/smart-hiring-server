@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/persona/profiles")
-//@CrossOrigin(origins = "*",maxAge = 3600)
+@CrossOrigin(origins = "*",maxAge = 3600)
 public class ProfileController {
 
     @Autowired

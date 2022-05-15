@@ -33,7 +33,7 @@ public class ProjectPersonasConverter {
 
         dto.setId(projectPersonasEntity.getId());
         dto.setPositionName(position.getName());
-        dto.setPositionImg(position.getImgPath());
+//        dto.setPositionImg(position.getImgPath());
         dto.setNumberCurrent(projectPersonasEntity.getNumberCurrent());
         dto.setNumberNeeded(projectPersonasEntity.getNumberNeeded());
         dto.setMonthNeeded(projectPersonasEntity.getMonthNeeded());

@@ -42,6 +42,8 @@ public class AuthEmailAndPasswordFilter extends UsernamePasswordAuthenticationFi
     private final ProfileService profileService;
     private Logger logger = LoggerFactory.getLogger(AuthEmailAndPasswordFilter.class);
 
+
+
     @SneakyThrows
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
@@ -52,6 +54,7 @@ public class AuthEmailAndPasswordFilter extends UsernamePasswordAuthenticationFi
                 authenticationRequest.getEmail(),
                 authenticationRequest.getPassword()
         );
+        logger.error("email passs truoc");
             Authentication authenticate = authenticationManager.authenticate(authentication);
         return authenticate;
     }

@@ -4,6 +4,10 @@ import com.example.smarthiring.common.ProjectStatus;
 import com.example.smarthiring.entity.*;
 import com.example.smarthiring.entity.Process;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -46,9 +50,13 @@ public class ProjectResponseDTO implements Serializable {
     private Double projectCompletion;
 
     @NotBlank
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate startAt;
 
     @NotBlank
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate endAt;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})

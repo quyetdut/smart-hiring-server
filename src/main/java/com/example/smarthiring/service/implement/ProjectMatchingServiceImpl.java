@@ -70,7 +70,7 @@ public class ProjectMatchingServiceImpl implements ProjectMatchingService {
             if (object != null) {
                 ObjectMapper oMapper = new ObjectMapper();
                 String json = oMapper.writeValueAsString(object);
-                ProjectSkillsDto projectSkillsDto = oMapper.readValue(json, ProjectSkillsDto.class);
+                ProjectSkillsDTO projectSkillsDto = oMapper.readValue(json, ProjectSkillsDTO.class);
                 projectMatching.setProjectName(projectSkillsDto.getProjectName());
                 if (CollectionUtils.isNotEmpty(projectSkillsDto.getCapabilitiesId())) {
                     projectMatching.setSkills(capabilytiesService.getCapabilityNames(projectSkillsDto.getCapabilitiesId()));

@@ -21,6 +21,7 @@ import java.util.Set;
 @RequestMapping("/project/document")
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class DocumentController {
 
     private final DocumentService documentService;

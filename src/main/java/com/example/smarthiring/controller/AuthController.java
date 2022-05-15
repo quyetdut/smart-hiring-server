@@ -23,7 +23,7 @@ import java.util.Map;
 @RestController
 @AllArgsConstructor
 @Slf4j
-//@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/auth")
 public class AuthController {
     private final UserService userService;

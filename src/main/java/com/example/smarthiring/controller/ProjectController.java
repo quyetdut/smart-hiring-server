@@ -29,6 +29,7 @@ import static com.example.smarthiring.common.ResponseMessage.NO_CONTENT;
 @RequestMapping("/project/projects")
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class ProjectController {
 
     private final ProjectService projectService;

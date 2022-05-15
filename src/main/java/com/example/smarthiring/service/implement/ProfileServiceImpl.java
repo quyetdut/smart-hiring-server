@@ -150,7 +150,6 @@ public class ProfileServiceImpl implements ProfileService {
                         ExceptionDefinition.USER_NOT_FOUND.getErrorCode())
                 );
 
-        log.warn("pass english check");
         // get locations and division
         Locations locations = locationRepository.findById(profiles.getLocationId())
                 .orElseThrow(() -> new FailException(ExceptionDefinition.LOCATION_NOT_FOUND.getMessage(), ExceptionDefinition.LOCATION_NOT_FOUND.getErrorCode()));

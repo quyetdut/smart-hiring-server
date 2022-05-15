@@ -50,12 +50,7 @@ public class ServiceUtilImpl implements ServiceUtil {
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith(tokenPrefix)) {
             token = headerAuth.replace(tokenPrefix, "");
         }
-        try{
-            jwtUtils.validateJwtToken(token);
-        } catch (Exception e) {
-            return false;
-        }
-        return true;
+       return jwtUtils.validateJwtToken(token);
     }
 
     @Override
