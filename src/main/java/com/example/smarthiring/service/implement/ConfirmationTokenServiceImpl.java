@@ -1,6 +1,6 @@
 package com.example.smarthiring.service.implement;
 
-import com.example.smarthiring.email.EmailService;
+//import com.example.smarthiring.email.EmailService;
 import com.example.smarthiring.entity.ConfirmationToken;
 import com.example.smarthiring.entity.User;
 import com.example.smarthiring.enums.ConfirmToken;
@@ -29,7 +29,7 @@ public class ConfirmationTokenServiceImpl implements ConfirmationTokenService {
 
     private final ConfirmationTokenRepository confirmationTokenRepository;
     private final UserRepository userRepository;
-    private final EmailService emailService;
+//    private final EmailService emailService;
 
     @Value("${application.mail.timeExpired}")
     private long timeExpired;
@@ -66,26 +66,26 @@ public class ConfirmationTokenServiceImpl implements ConfirmationTokenService {
 
     @Override
     public void sendToken(User user, ConfirmationType type) throws MessagingException {
-        try {
-            String randomDigit = String.format("%06d", new Random().nextInt(999999));
-            ConfirmationToken confirmationToken = new ConfirmationToken(
-                    randomDigit,
-                    LocalDateTime.now(),
-                    LocalDateTime.now().plusMinutes(timeExpired),
-                    user,
-                    type
-            );
-
-            String emailContent = String.format(type.getMessage(), user.getEmail().substring(0, user.getEmail().lastIndexOf("@")), randomDigit, timeExpired);
-            emailService.send(
-                    user.getEmail(),
-                    "Confirm your email!",
-                    emailContent
-            );
-            confirmationTokenRepository.save(confirmationToken);
-        } catch (MessagingException | MailAuthenticationException e) {
-            throw new MessagingException("Failed to send email");
-        }
+//        try {
+//            String randomDigit = String.format("%06d", new Random().nextInt(999999));
+//            ConfirmationToken confirmationToken = new ConfirmationToken(
+//                    randomDigit,
+//                    LocalDateTime.now(),
+//                    LocalDateTime.now().plusMinutes(timeExpired),
+//                    user,
+//                    type
+//            );
+//
+//            String emailContent = String.format(type.getMessage(), user.getEmail().substring(0, user.getEmail().lastIndexOf("@")), randomDigit, timeExpired);
+//            emailService.send(
+//                    user.getEmail(),
+//                    "Confirm your email!",
+//                    emailContent
+//            );
+//            confirmationTokenRepository.save(confirmationToken);
+//        } catch (MessagingException | MailAuthenticationException e) {
+//            throw new MessagingException("Failed to send email");
+//        }
     }
 
     @Override

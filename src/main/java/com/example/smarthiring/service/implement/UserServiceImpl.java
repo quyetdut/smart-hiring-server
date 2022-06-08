@@ -60,12 +60,13 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
         try {
             userRepository.save(user);
-            confirmationTokenService.sendToken(user, ConfirmationType.SIGN_UP);
+//            confirmationTokenService.sendToken(user, ConfirmationType.SIGN_UP);
             return true;
-        } catch (MessagingException e) {
-            log.error(e.getMessage());
-            throw new RegistrationFailedException(e.getMessage(), 1010);
+//        } catch (MessagingException e) {
+//            log.error(e.getMessage());
+//            throw new RegistrationFailedException(e.getMessage(), 1010);
         } catch (Exception e) {
+            log.error(e.getMessage());
             throw new RegistrationFailedException("registration failed", 1011);
         }
     }

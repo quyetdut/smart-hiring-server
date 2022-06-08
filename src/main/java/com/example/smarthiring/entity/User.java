@@ -49,7 +49,7 @@ public class User implements UserDetails {
     private Set<Role> roles;
 
     @Column(name = "is_enabled")
-    private Boolean isEnabled = false;
+    private Boolean isEnabled = true;
 
     @Column(name = "is_looked")
     private Boolean isLooked = false;
@@ -81,7 +81,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return !isLooked;
+        return true;
     }
 
     @Override
@@ -91,6 +91,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return isEnabled;
+        return true;
     }
 }

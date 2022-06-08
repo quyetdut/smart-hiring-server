@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
 @Slf4j
 public class FileServiceImpl implements FileService {
 
-//    private final Path ROOT_FILE_PATH = Paths.get("/home/qmait/iresource/project");
-    private final Path ROOT_FILE_PATH = Paths.get("D://WorkSpace/smart_hiring/project");
+    private final Path ROOT_FILE_PATH = Paths.get("/home/qmait/smart_hiring/project");
+//    private final Path ROOT_FILE_PATH = Paths.get("D://WorkSpace/smart_hiring/project");
 
     private final String IMAGE_PATH = "image";
     private final String DOCUMENT_PATH = "document";

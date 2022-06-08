@@ -54,7 +54,6 @@ public class AuthEmailAndPasswordFilter extends UsernamePasswordAuthenticationFi
                 authenticationRequest.getEmail(),
                 authenticationRequest.getPassword()
         );
-        logger.error("email passs truoc");
             Authentication authenticate = authenticationManager.authenticate(authentication);
         return authenticate;
     }
