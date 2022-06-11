@@ -54,36 +54,36 @@ public class ProjectMatchingServiceImpl implements ProjectMatchingService {
 
     private static final String MATCHING_SCORE = "matchingScore";
 
-    @Override
-    public boolean saveMatchingScore(ProjectMatchingDto projectMatchingDto) {
-        Profiles profile = profileRepository.findByUserId(projectMatchingDto.getUserId()).orElseThrow(() -> new NotFoundException(ExceptionDefinition.PROFILE_NOT_FOUND.getMessage(), ExceptionDefinition.PROFILE_NOT_FOUND.getErrorCode()));
-
-        Object object = projectService.getProjectSkills(projectMatchingDto.getProjectId());
-
-        try {
-            ProjectMatching projectMatching = projectMatchingRepository.findByProjectIdAndProfileId(projectMatchingDto.getProjectId(), profile.getId()).orElse(null);
-            if (projectMatching == null) {
-                projectMatching = new ProjectMatching();
-                projectMatching.setProjectId(projectMatchingDto.getProjectId());
-                projectMatching.setProfileId(profile.getId());
-            }
-            if (object != null) {
-                ObjectMapper oMapper = new ObjectMapper();
-                String json = oMapper.writeValueAsString(object);
-                ProjectSkillsDTO projectSkillsDto = oMapper.readValue(json, ProjectSkillsDTO.class);
-                projectMatching.setProjectName(projectSkillsDto.getProjectName());
-                if (CollectionUtils.isNotEmpty(projectSkillsDto.getCapabilitiesId())) {
-                    projectMatching.setSkills(capabilytiesService.getCapabilityNames(projectSkillsDto.getCapabilitiesId()));
-                }
-            }
-
-            projectMatching.setMatchingScore(projectMatchingDto.getMatchingScore());
-            projectMatchingRepository.save(projectMatching);
-            return true;
-        } catch (Exception ex) {
-            return false;
-        }
-    }
+//    @Override
+//    public boolean saveMatchingScore(ProjectMatchingDto projectMatchingDto) {
+//        Profiles profile = profileRepository.findByUserId(projectMatchingDto.getUserId()).orElseThrow(() -> new NotFoundException(ExceptionDefinition.PROFILE_NOT_FOUND.getMessage(), ExceptionDefinition.PROFILE_NOT_FOUND.getErrorCode()));
+//
+//        Object object = projectService.getProjectSkills(projectMatchingDto.getProjectId());
+//
+//        try {
+//            List<ProjectMatching> projectMatching = projectMatchingRepository.findByProjectIdAndProfileId(projectMatchingDto.getProjectId(), profile.getId()).orElse(null);
+//            if (projectMatching == null) {
+//                projectMatching = new ProjectMatching();
+//                projectMatching.setProjectId(projectMatchingDto.getProjectId());
+//                projectMatching.setProfileId(profile.getId());
+//            }
+//            if (object != null) {
+//                ObjectMapper oMapper = new ObjectMapper();
+//                String json = oMapper.writeValueAsString(object);
+//                ProjectSkillsDTO projectSkillsDto = oMapper.readValue(json, ProjectSkillsDTO.class);
+//                projectMatching.setProjectName(projectSkillsDto.getProjectName());
+//                if (CollectionUtils.isNotEmpty(projectSkillsDto.getCapabilitiesId())) {
+//                    projectMatching.setSkills(capabilytiesService.getCapabilityNames(projectSkillsDto.getCapabilitiesId()));
+//                }
+//            }
+//
+//            projectMatching.setMatchingScore(projectMatchingDto.getMatchingScore());
+//            projectMatchingRepository.save(projectMatching);
+//            return true;
+//        } catch (Exception ex) {
+//            return false;
+//        }
+//    }
 
     @Override
     public PageProjectMatchingDto getProjectMatchingForUser(Integer userId, String filterValue, Integer page, Integer size) {
@@ -128,15 +128,22 @@ public class ProjectMatchingServiceImpl implements ProjectMatchingService {
     }
 
     @Override
-    public ProjectMatchingResponseDto getMatchingScore(Integer userId, Integer projectId) {
-        Profiles profile = profileRepository.findByUserId(userId).orElseThrow(() -> new NotFoundException(ExceptionDefinition.PROFILE_NOT_FOUND.getMessage(), ExceptionDefinition.PROFILE_NOT_FOUND.getErrorCode()));
-        Optional<ProjectMatching> projectMatching = projectMatchingRepository.findByProjectIdAndProfileId(projectId, profile.getId());
-        ProjectMatchingResponseDto result = new ProjectMatchingResponseDto();
-        if (projectMatching.isPresent()) {
-            result.setMatchingScore(projectMatching.get().getMatchingScore());
-        }
+    public List<ProjectMatching> getMatchingScore(Integer userId, Integer projectId) {
+        Profiles profile = profileRepository.findByUserId(userId)
+                .orElseThrow(() -> new NotFoundException(
+                        ExceptionDefinition.PROFILE_NOT_FOUND.getMessage(),
+                        ExceptionDefinition.PROFILE_NOT_FOUND.getErrorCode())
+                );
+        Optional<List<ProjectMatching>> projectMatchings = projectMatchingRepository.findByProjectIdAndProfileId(projectId, profile.getId());
+//        List<ProjectMatchingResponseDto> result = new ProjectMatchingResponseDto();
+//        if (projectMatching.isPresent()) {
+//            result.setMatchingScore(projectMatching.get().getMatchingScore());
+//        }
+//
+//        return result;
 
-        return result;
+        if (projectMatchings.isPresent()) return projectMatchings.get();
+        else return new ArrayList<>();
     }
 
     @Override
@@ -150,20 +157,20 @@ public class ProjectMatchingServiceImpl implements ProjectMatchingService {
         }
     }
 
-    @Override
-    public Boolean deleteProjectMatching(Integer projectId, Integer userId) {
-        try {
-            Optional<Profiles> profilesOptional = profileRepository.findByUserId(userId);
-            if (!profilesOptional.isPresent()) return true;
-            Optional<ProjectMatching> projectMatchingOptional = projectMatchingRepository.findByProjectIdAndProfileId(
-                    projectId, profilesOptional.get().getId());
-            if (!projectMatchingOptional.isPresent()) return true;
-            projectMatchingRepository.deleteById(projectMatchingOptional.get().getId());
-
-            return true;
-        } catch (Exception ex) {
-            log.info(ex.getMessage());
-            return false;
-        }
-    }
+//    @Override
+//    public Boolean deleteProjectMatching(Integer projectId, Integer userId) {
+//        try {
+//            Optional<Profiles> profilesOptional = profileRepository.findByUserId(userId);
+//            if (!profilesOptional.isPresent()) return true;
+//            Optional<ProjectMatching> projectMatchingOptional = projectMatchingRepository.findByProjectIdAndProfileId(
+//                    projectId, profilesOptional.get().getId());
+//            if (!projectMatchingOptional.isPresent()) return true;
+//            projectMatchingRepository.deleteById(projectMatchingOptional.get().getId());
+//
+//            return true;
+//        } catch (Exception ex) {
+//            log.info(ex.getMessage());
+//            return false;
+//        }
+//    }
 }

@@ -20,15 +20,15 @@ public class RecommendController {
     @Autowired
     private ProjectMatchingService projectMatchingService;
 
-    @PostMapping("/set-project-matching-score")
-    public ResponseEntity<Object> setMatchingScore(@RequestBody ProjectMatchingDto projectMatchingDto){
-        log.info("projectMatchingDTO: {}", projectMatchingDto);
-        if (projectMatchingService.saveMatchingScore(projectMatchingDto)) {
-            return ResponseEntity.ok(ResponseHandler.getInstance().response(null, ResponseResult.SUCCESS));
-        } else {
-            return ResponseEntity.internalServerError().build();
-        }
-    }
+//    @PostMapping("/set-project-matching-score")
+//    public ResponseEntity<Object> setMatchingScore(@RequestBody ProjectMatchingDto projectMatchingDto){
+//        log.info("projectMatchingDTO: {}", projectMatchingDto);
+//        if (projectMatchingService.saveMatchingScore(projectMatchingDto)) {
+//            return ResponseEntity.ok(ResponseHandler.getInstance().response(null, ResponseResult.SUCCESS));
+//        } else {
+//            return ResponseEntity.internalServerError().build();
+//        }
+//    }
 
     @GetMapping("/explore-project")
     public ResponseEntity<Object> getMatchingProjects(@RequestParam("userId") Integer userId, @RequestParam(value = "filterValue", required = false) String filterValue, @RequestParam("page") Integer page, @RequestParam("size") Integer size) {
@@ -40,14 +40,14 @@ public class RecommendController {
         }
     }
 
-    @DeleteMapping("/delete-project-matching")
-    public ResponseEntity<Object> deleteProjectMatching(@RequestParam(value = "userId") Integer userId,
-                                                        @RequestParam(value = "projectId") Integer projectId) {
-        log.info("userId: {}", userId);
-        Boolean isDeleted = projectMatchingService.deleteProjectMatching(userId, projectId);
-        if (isDeleted) return ResponseEntity.ok(ResponseHandler.getInstance().response(true, ResponseResult.SUCCESS));
-        throw new NotFoundException("can't delete project matching", 1024);
-    }
+//    @DeleteMapping("/delete-project-matching")
+//    public ResponseEntity<Object> deleteProjectMatching(@RequestParam(value = "userId") Integer userId,
+//                                                        @RequestParam(value = "projectId") Integer projectId) {
+//        log.info("userId: {}", userId);
+//        Boolean isDeleted = projectMatchingService.deleteProjectMatching(userId, projectId);
+//        if (isDeleted) return ResponseEntity.ok(ResponseHandler.getInstance().response(true, ResponseResult.SUCCESS));
+//        throw new NotFoundException("can't delete project matching", 1024);
+//    }
 
     @GetMapping("/get-matching-score")
     public ResponseEntity<Object> showMatchingScore(@RequestParam(value = "userId") Integer userId,

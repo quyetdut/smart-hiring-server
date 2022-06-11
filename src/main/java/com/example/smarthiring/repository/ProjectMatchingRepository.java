@@ -10,11 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 @Transactional(readOnly = true)
-public interface ProjectMatchingRepository extends JpaRepository<ProjectMatching, Integer> {
-    Optional<ProjectMatching> findByProjectIdAndProfileId(Integer projectId, Integer profileId);
+public interface ProjectMatchingRepository extends JpaRepository<ProjectMatching, UUID> {
+    Optional<List<ProjectMatching>> findByProjectIdAndProfileId(Integer projectId, Integer profileId);
 
     Page<ProjectMatching> findAllByProfileId(Integer profileId, Pageable pageable);
 

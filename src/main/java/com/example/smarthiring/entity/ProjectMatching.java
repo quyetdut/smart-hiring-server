@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 @Entity
 @AllArgsConstructor
@@ -14,7 +15,7 @@ import javax.validation.constraints.NotNull;
 public class ProjectMatching {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private UUID id;
 
     @NotNull(message = "profileId not null")
     private Integer profileId;
