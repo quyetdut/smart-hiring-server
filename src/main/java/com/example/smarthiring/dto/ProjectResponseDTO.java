@@ -1,8 +1,8 @@
 package com.example.smarthiring.dto;
 
-import com.example.smarthiring.common.ProjectStatus;
 import com.example.smarthiring.entity.*;
 import com.example.smarthiring.entity.Process;
+import com.example.smarthiring.enums.ProjectStatus;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

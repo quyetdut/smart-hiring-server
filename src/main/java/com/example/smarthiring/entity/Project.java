@@ -1,6 +1,6 @@
 package com.example.smarthiring.entity;
 
-import com.example.smarthiring.common.ProjectStatus;
+import com.example.smarthiring.enums.ProjectStatus;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

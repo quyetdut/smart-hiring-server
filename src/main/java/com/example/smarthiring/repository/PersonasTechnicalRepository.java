@@ -18,4 +18,8 @@ public interface PersonasTechnicalRepository extends JpaRepository<PersonasTechn
     List<PersonasTechnical> findAllByProjectPersonasIdIn(Collection<Integer> projectPersonasIds);
 
     Boolean existsPersonasTechnicalByCapabilitiesId(Integer capabilityId);
+
+    Set<PersonasTechnical> findAllByCapabilitiesIdIn(List<Integer> capabilitiesIdList);
+
+    Set<PersonasTechnical> findAllByProjectPersonasIdIn(List<Integer> projectPersonasIdList);
 }

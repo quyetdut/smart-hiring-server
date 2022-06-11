@@ -381,7 +381,7 @@ public class ProjectServiceImpl implements ProjectService, ResponseMessage {
             Set<Integer> skills = new HashSet<>();
             Set<ProjectPersonas> ppl = projectPersonasRepository.findAllByProjectId(project.getId());
             if (!CollectionUtils.isEmpty(ppl)) {
-                List<PersonasTechnical> ptl = personasTechnicalRepository.findAllByProjectPersonasIdIn(ppl.stream().map(pt -> pt.getId()).collect(Collectors.toList()));
+                Set<PersonasTechnical> ptl = personasTechnicalRepository.findAllByProjectPersonasIdIn(ppl.stream().map(pt -> pt.getId()).collect(Collectors.toList()));
                 if (!CollectionUtils.isEmpty(ptl)) {
                     ptl.forEach(pt -> {
                         skills.add(pt.getCapabilitiesId());

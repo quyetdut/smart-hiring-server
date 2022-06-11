@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,4 +21,6 @@ public interface ProjectMatchingRepository extends JpaRepository<ProjectMatching
     Page<ProjectMatching> findAllByProfileIdAndProjectNameContainsOrProfileIdAndSkillsContains(Integer id1, String projectName, Integer id2, String skill, Pageable pageable);
 
     List<ProjectMatching> findAllByProjectIdAndPositionId(Integer projectId, Integer positionId);
+
+    List<ProjectMatching> findAllByProfileIdIn(Collection<Integer> profileIds);
 }

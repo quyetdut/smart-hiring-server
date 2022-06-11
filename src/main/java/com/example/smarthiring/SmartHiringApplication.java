@@ -5,11 +5,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import javax.annotation.Resource;
 
 @SpringBootApplication
 @Slf4j
+@EnableScheduling
 public class SmartHiringApplication implements CommandLineRunner {
 //    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
 

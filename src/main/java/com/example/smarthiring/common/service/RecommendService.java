@@ -1,5 +1,6 @@
 package com.example.smarthiring.common.service;
 
+import com.example.smarthiring.common.vo.UserSkills;
 import com.example.smarthiring.dto.CapabilityLevelDto;
 
 import java.util.HashMap;
@@ -23,6 +24,10 @@ public class RecommendService {
 
         return instance;
     }
+
+//    public List<UserSkills> getUserSkills() {
+//
+//    }
 
     public long getMatchingScore(List<CapabilityLevelDto> userSkills, List<CapabilityLevelDto> personaSkills, Map<Integer, Double> personaPercent) {
         Map<Integer, Integer> mapPersonaLevel = personaSkills.stream().collect(Collectors.toMap(CapabilityLevelDto::getCapabilityId, CapabilityLevelDto::getLevel));

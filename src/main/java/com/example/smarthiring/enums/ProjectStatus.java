@@ -1,4 +1,4 @@
-package com.example.smarthiring.common;
+package com.example.smarthiring.enums;
 
 public enum ProjectStatus {
     PUBLIC,

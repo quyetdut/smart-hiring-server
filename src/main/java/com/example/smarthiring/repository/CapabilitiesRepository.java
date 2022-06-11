@@ -20,4 +20,6 @@ public interface CapabilitiesRepository extends JpaRepository<Capabilities, Inte
     Optional<Capabilities> findByName(String name);
 
     Optional<Capabilities> findById(Integer id);
+    List<Capabilities> findAllByIdIn(List<Integer> ids);
+
 }
