@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 @SpringBootApplication
 @Slf4j
 public class SmartHiringApplication implements CommandLineRunner {
-//    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
+//    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
 
     @Resource
     FileServiceImpl storageService;

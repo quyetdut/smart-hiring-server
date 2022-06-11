@@ -32,17 +32,11 @@ public class ProfileServiceImpl implements ProfileService {
     @Autowired
     private ProfileCapabilitiesRepository profileCapabilitiesRepository;
     @Autowired
-    private ProfileAwardRepository profileAwardRepository;
-    @Autowired
     private CapabilitiesRepository capabilitiesRepository;
     @Autowired
     private PositionRepository positionRepository;
     @Autowired
-    private AwardRepository awardRepository;
-    @Autowired
     private LocationRepository locationRepository;
-    @Autowired
-    private WorkExperienceService workExperienceService;
     @Autowired
     private ProfilePositionRepository profilePositionRepository;
     @Autowired
@@ -62,6 +56,9 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Autowired
     private ProjectUserStatusService projectUserStatusService;
+
+    @Autowired
+    private UserRepository userRepository;
 
 
     @Override
@@ -229,7 +226,15 @@ public class ProfileServiceImpl implements ProfileService {
         if (profiles.isPresent()) {
             return profiles.get().getFirstName() + " " + profiles.get().getLastName();
         }
-        return "noname";
+        else {
+            try {
+                User user = userRepository.getById(userId);
+                return user.getEmail();
+            } catch (Exception err) {
+                log.error(err.getMessage());
+                return "noname";
+            }
+        }
     }
 
     @Override

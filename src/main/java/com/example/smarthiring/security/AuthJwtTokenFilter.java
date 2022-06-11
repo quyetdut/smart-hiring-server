@@ -38,6 +38,7 @@ public class AuthJwtTokenFilter extends OncePerRequestFilter {
                                     HttpServletResponse httpServletResponse,
                                     FilterChain filterChain) throws ServletException, IOException {
         String jwt = parseJwt(httpServletRequest);
+//        String jwt = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxdXlldHBtMUB5b3BtYWlsLmNvbSIsImlhdCI6MTY1NDkyMjAzOSwiZXhwIjoxNjU0OTY2ODAwfQ.xEcSJDbAp5unSiZI7qAD701wXTBiFY1EFaSDop7PD_u740W-_LNi6UY-bsybLvsGLYDtTE9ae1GkoseyqcZ2ng";
         try {
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
                 String email = jwtUtils.getEmailFromJwtToken(jwt);
