@@ -55,7 +55,7 @@ public class CustomQuartzJob extends QuartzJobBean {
 
             jobLauncher.run(job, params);
         } catch (DuplicateKeyException e) {
-            log.error(e.getMessage());
+            log.error("ahihi {}", e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
         }

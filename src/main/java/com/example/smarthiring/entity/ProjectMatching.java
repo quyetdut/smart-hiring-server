@@ -15,7 +15,7 @@ import java.util.UUID;
 public class ProjectMatching {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Integer id;
 
     @NotNull(message = "profileId not null")
     private Integer profileId;

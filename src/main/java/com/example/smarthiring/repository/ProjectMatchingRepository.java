@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @Repository
 @Transactional(readOnly = true)
-public interface ProjectMatchingRepository extends JpaRepository<ProjectMatching, UUID> {
+public interface ProjectMatchingRepository extends JpaRepository<ProjectMatching, Integer> {
     Optional<List<ProjectMatching>> findByProjectIdAndProfileId(Integer projectId, Integer profileId);
 
     Page<ProjectMatching> findAllByProfileId(Integer profileId, Pageable pageable);
